@@ -1,0 +1,76 @@
+.header {
+    &-logo {
+        padding: 28px 0 32px;
+        display: inline-block;
+    }
+    &-description {
+        display: inline-block;
+        color: #999;
+        vertical-align: middle;
+        font-size: 0.8667em;
+        line-height: 1.5385em;
+        margin-left: 60px;
+        span {
+            opacity: 1;
+            transition: .35s linear;
+        }
+    }
+    &:hover {
+        .header-description {
+            span {
+                opacity: .5;
+            }
+        }
+    }
+
+    .navbar {
+        background-color: #c00; // #00ccff // #000066;
+        &-brand {
+            padding-top: 0;
+        }
+    }
+}
+.footer {
+    padding: 30px 0;
+    color: #ffffff;
+    background-color: #333; //#c00;
+}
+
+/* Carousel base class */
+.carousel {
+    margin-bottom: 4rem;
+
+    &-title {
+        font-weight: 600;
+    }
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+    position: relative;
+    bottom: 3rem;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    background: #c00;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel-item {
+
+}
+.carousel-caption {
+    //border-radius: 30px;
+    padding: 60px;
+}
+
+.carousel-control-prev {
+    left: 60px;
+    z-index: 30;
+}
+.carousel-control-next {
+    right: 60px;
+    z-index: 30;
+}
+.carousel-indicators {
+    z-index: 30;
+}
