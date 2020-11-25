@@ -1,10 +1,8 @@
 .header {
     &-logo {
         padding: 28px 0 32px;
-        display: inline-block;
     }
     &-description {
-        display: inline-block;
         color: #999;
         vertical-align: middle;
         font-size: 0.8667em;
@@ -13,6 +11,23 @@
         span {
             opacity: 1;
             transition: .35s linear;
+        }
+    }
+    &-support {
+        color: #333;
+        vertical-align: middle;
+        font-size: 0.8667em;
+        line-height: 1.5385em;
+        .text-muted {
+            color: #999 !important;
+        }
+        a {
+            text-decoration: none;
+            color: #333;
+            border-bottom: 1px solid #33333350;
+            &:hover {
+                border-bottom: 1px solid transparent;
+            }
         }
     }
     &:hover {
@@ -31,9 +46,87 @@
     }
 }
 .footer {
-    padding: 30px 0;
     color: #ffffff;
     background-color: #333; //#c00;
+    .bi {
+        position: absolute;
+        width: 24px;
+        left: 0;
+    }
+    &-lic {
+        font-size: 0.815em;
+        line-height: 1.385em;
+        margin-bottom: 30px;
+        padding-left: 40px;
+        position: relative;
+        a {
+            color: #ffffff;
+            text-decoration: none;
+            border-bottom: 1px solid #ffffff50;
+            &:hover {
+                border-bottom: 1px solid transparent;
+                color: #ffffff90;
+            }
+        }
+    }
+    .footer-menu {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        line-height: 22px;
+
+        counter-reset: count;
+        padding: 0;
+        //display: flex;
+        //flex-wrap: wrap;
+
+        li {
+            position: relative;
+            //display: inline-block;
+            vertical-align: top;
+            padding-left: 27px;
+            //width: 33.3%;
+
+            &:before {
+                top: 14px;
+                content: "";
+                position: absolute;
+                //top: 18px;
+                left: 0;
+                width: 12px;
+                height: 1px;
+                background-color: #474747;
+            }
+            a {
+                position: relative;
+                display: inline-block;
+                vertical-align: top;
+                text-decoration: none;
+                font-size: 13px;
+                line-height: 28px;
+                color: #999999;
+                &:after {
+                    content: "";
+                    position: absolute;
+                    bottom: 5px;
+                    left: 0;
+                    right: 0;
+                    width: 100%;
+                    height: 1px;
+                    background-color: #99999950;
+                }
+                &:hover {
+                    color: #ffffff;
+                    &:after {
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
+    }
+    &-copy {
+        font-size: 13px;
+    }
 }
 
 /* Carousel base class */
@@ -51,7 +144,6 @@
     z-index: 10;
     left: 0;
     top: 0;
-    background: #c00;
 }
 
 /* Declare heights because of positioning of img element */
@@ -64,12 +156,18 @@
 }
 
 .carousel-control-prev {
-    left: 60px;
-    z-index: 30;
+    //left: 60px;
+    //z-index: 30;
+    &-icon {
+
+    }
 }
 .carousel-control-next {
-    right: 60px;
-    z-index: 30;
+    //right: 60px;
+    //z-index: 30;
+    &-icon {
+
+    }
 }
 .carousel-indicators {
     z-index: 30;

@@ -7,17 +7,17 @@
             <li data-target="#myCarousel" data-slide-to="1"></li>
         </ol>
         <div class="carousel-inner">
-            <div class="carousel-item active">
+            <div class="carousel-item active" style="background-color: #333;">
                 <div class="container">
-                    <div class="carousel-caption text-left">
+                    <div class="carousel-caption text-left" style="background-image: url('/img/night.png'); background-position: right center; background-repeat: no-repeat; background-size: contain">
                         <h1 class="carousel-title">Мы гарантируем,<br> что кошмарнее хостинга<br> вы еще не видели.</h1>
                         <p></p>
                     </div>
                 </div>
             </div>
-            <div class="carousel-item">
+            <div class="carousel-item" style="background-color: #c00;">
                 <div class="container">
-                    <div class="carousel-caption text-left">
+                    <div class="carousel-caption text-left" style="background-image: url('/img/rkn.png'); background-position: right center; background-repeat: no-repeat; background-size: 185px">
                         <h1 class="carousel-title">Наши IP-адреса в топе Роскомнадзора,<br> поэтому нет причин переживать,<br> клиенты вас не заметят.</h1>
                         <p></p>
                     </div>

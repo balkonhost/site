@@ -20,8 +20,8 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 <body class="d-flex flex-column h-100">
-<header class="header sticky-top">
-    <div class="container test">
+<header class="header">
+    <div class="container d-flex align-items-center">
             <div class="header-logo">
                 <a href="{{ route('home') }}">
                     <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 241 51" height="30" width="140" version="1.1">
@@ -34,6 +34,12 @@
                 </a>
             </div>
             <div class="header-description">{{ config('app.name') }} — cамый<br> <span>ст</span>ебанутый хостинг в России</div>
+            <div class="header-support ml-auto">
+                <div class="text-right">
+                    <div>Техподдержка клиентов: <a href="mailto:fuckup@balkon.host">fuckup@balkon.host</a></div>
+                    <div class="text-muted">Она вам все равно не поможет</div>
+                </div>
+            </div>
     </div>
 
     <nav class="navbar navbar-expand-lg navbar-dark">
@@ -94,13 +100,71 @@
     @yield('main')
 </main>
 
-<footer class="footer mt-auto py-3">
+<footer class="footer mt-auto py-5">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 col-md-8">Не гарантируем возврат денежных средств, сохранность данных и конфиденциальность!</div>
             <div class="col-sm-12 col-md-4">
-                <div class="footer-copy text-right">
-                    Copyright © {{ date('Y') }} «Балкон.Хост»
+                <div class="footer-lic">
+                    <svg viewBox="0 0 16 16" class="bi bi-file-medical" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M4 0h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H4z"/>
+                        <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v.634l.549-.317a.5.5 0 1 1 .5.866L9 6l.549.317a.5.5 0 1 1-.5.866L8.5 6.866V7.5a.5.5 0 0 1-1 0v-.634l-.549.317a.5.5 0 1 1-.5-.866L7 6l-.549-.317a.5.5 0 0 1 .5-.866l.549.317V4.5A.5.5 0 0 1 8 4zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+                    </svg>
+                    <a href="https://rkn.gov.ru/it/control/p852/" target="_blank" title="Разъяснения Федеральной службы по надзорув сфере связи, информационных технологий и массовых коммуникаций">В соответствиями с разъяснениями Роскомнадзора лицензия на телематические услуги связи для оказания услуг хостинга не требуется.</a>
+                </div>
+                <div class="footer-lic">
+                    <div class="float-left">
+                        <svg viewBox="0 0 16 16" class="bi bi-exclamation" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                        </svg>
+                    </div>
+                    <div>Не гарантируем возврат денежных средств, сохранность данных и конфиденциальность!</div>
+                    <div class="mt-2">Настоящий ресурс может содержать материалы 18+.</div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-8">
+                <div class="row">
+                    <div class="col-sm-12 col-md-3">
+                        <ul class="footer-menu">
+                            <li><a href="">Хостинг сайтов</a></li>
+                            <li><a href="">Регистрация доменов</a></li>
+                            <li><a href="">Сервера</a></li>
+                            <li><a href="">SSL-сертификты</a></li>
+                            <li><a href="">Продажа CMS</a></li>
+                            <li><a href="">О лицензировании</a></li>
+                            {{--
+                            <li><a href="/wordpress-hosting/">Wordpress хостинг</a></li>
+                            <li><a href="/joomla-hosting/">Joomla хостинг</a></li>
+                            <li><a href="/hosting-1c-bitrix/">1С-Битрикс хостинг</a></li>
+                            <li><a href="/hosting-umi-cms/">UMI.CMS хостинг</a></li>
+                            <li><a href="/hosting-dle/">DLE хостинг</a></li>
+                            <li><a href="/hosting-modx/">MODx хостинг</a></li>
+                            <li><a href="/cms-hosting/">Хостинг CMS</a></li>
+                            <li><a href="/bezlimitnyj-hosting/">Безлимитный хостинг</a></li>
+                            <li><a href="/vip-hosting/">VIP хостинг</a></li>
+                            <li><a href="/besplatnyj-hosting/">Бесплатный хостинг</a></li>
+                            <li><a href="/about/">О компании</a></li>
+                            <li><a href="/arenda-servera-dedicated/">Выделенные (dedicated)</a></li>
+                            <li><a href="/arenda-servera-bitrix24/">Сервер Битрикс24</a></li>
+                            <li><a href="/documents/">Документы</a></li>
+                            <li><a href="/prodlenie-domenov/">Продление доменов</a></li>
+                            <li><a href="/vds-vps-kvm-nvme-server/">VDS на NVMe (KVM)</a></li>
+                            <li><a href="/hosting-dlya-foruma/">Хостинг для форума</a></li>
+                            <li><a href="/hosting-dlya-amiro-cms/">Хостинг Amiro.CMS</a></li>
+                            <li><a href="/hosting-typo3/">Хостинг TYPO3</a></li>
+                            <li><a href="/hosting-dlya-opencart/">Хостинг для OpenCart</a></li>
+                            <!--<li><a href="/#" rel="nofollow">Партнерская программа</a></li>-->
+                            --}}
+                        </ul>
+                    </div>
+                    <div class="col-sm-12 col-md-3">
+                    </div>
+                    <div class="col-sm-12 col-md-3">
+                    </div>
+                    <div class="col-sm-12 col-md-3">
+                        <div class="footer-copy text-right">
+                            Copyright © {{ date('Y') }} «Балкон.Хост»
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
