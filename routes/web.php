@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
-})->name('home');
+    return view('index');
+})->name('index');
 
 Route::get('/domain', function () {
     return view('domain');
@@ -40,7 +40,3 @@ Route::get('/cms', function () {
 Route::get('/support', function () {
     return view('support');
 })->name('support');
-
-Route::get('/my', function () {
-    return view('my');
-})->name('my');
