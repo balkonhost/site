@@ -1,3 +1,13 @@
+@php
+    $messages = [
+        config('app.name') ." — мы перешли\r\n с перфокарт на бабины",
+        config('app.name') ." — наши сервера\r\n на 64 мб оперативы",
+        config('app.name') ." — 1000 строчек кода\r\n и сервер перезагружается",
+        //config('app.name') ." — cамый\r\n стебанутый хостинг в России"
+    ];
+    $key = array_rand($messages);
+    $message = $messages[$key];
+@endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-100">
 <head>
@@ -9,8 +19,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="yandex-verification" content="bcc575eacccd4972">
 
-    <title>@yield('title', config('app.name') .' – самый [ст]ебанутый хостинг в России')</title>
-    <meta name="description" content="@yield('description', config('app.name') .' – самый [ст]ебанутый хостинг в России')">
+    <title>@yield('title', $message)</title>
+    <meta name="description" content="@yield('description', $message)">
     <meta name="keywords" content="@yield('keywords', 'хостинг,регистрация доменов,сделано на Урале')">
 
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -34,7 +44,7 @@
                     </svg>
                 </a>
             </div>
-            <div class="header-description">{{ config('app.name') }} — cамый<br> <span>ст</span>ебанутый хостинг в России</div>
+            <div class="header-description">{!! nl2br($message) !!}</div>
             <div class="header-support ml-auto">
                 <div class="text-right">
                     <div>Техподдержка клиентов: <a href="mailto:fuckup@balkon.host">fuckup@balkon.host</a></div>
