@@ -240,7 +240,7 @@
             © {{ date('Y') }}, {{ $message }}{{--Проект «Балкон.Хост» — неадекватный хостинг --}}
         </div>
         <div class="footer-version mt-5 text-center">
-            Версия <a href="https://github.com/balkonhost/site/releases" target="_blank" title="Последная версия на GitHub">Pre-Alpha 0.0.1</a> · Дальше будет хуже
+            Версия <a href="https://github.com/balkonhost/site/releases" target="_blank" title="Последная версия на GitHub">Pre-Alpha 0.0.2</a> · Дальше будет хуже
         </div>
     </div>
 </footer>
