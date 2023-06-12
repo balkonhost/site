@@ -39,7 +39,7 @@
     }
 
     .navbar {
-        background-color: #c00; // #00ccff // #000066;
+        background-color: $blue_dark;// #c00;
         &-brand {
             padding-top: 0;
         }
@@ -57,7 +57,7 @@
         }
         a:hover,
         a:focus {
-            color: #c00;
+            color: $blue_sky;
         }
     }
     .breadcrumb-item + .breadcrumb-item::before {
@@ -72,8 +72,8 @@
     .list-group-item {
         padding: 1rem 1rem;
         &.active {
-            background-color: #c00;
-            border-color: #c00;
+            background-color: $blue_sky;
+            border-color: $blue_sky;
         }
     }
 
@@ -81,7 +81,7 @@
 
 .footer {
     color: #ffffff;
-    background-color: #333; //#c00;
+    background-color: $coal;
     .bi {
         position: absolute;
         width: 24px;
@@ -198,6 +198,7 @@
         font-weight: 600;
     }
 }
+
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
     position: relative;
@@ -235,5 +236,5 @@
 }
 
 .twitter-section {
-    border: 1px solid #c00;
+    border: 1px solid $blue_sky;
 }
