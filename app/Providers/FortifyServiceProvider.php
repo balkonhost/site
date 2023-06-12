@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Cache;
 use App\Models\User;
+use Carbon\Carbon;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -61,6 +62,7 @@ class FortifyServiceProvider extends ServiceProvider
             if ($user &&
                 Hash::check($request->password, $user->password)) {
                 if ($user->isDirty()) {
+                    $user->email_verified_at = Carbon::now();
                     $user->save();
                 }
 

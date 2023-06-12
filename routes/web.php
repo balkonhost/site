@@ -40,3 +40,15 @@ Route::get('/cms', function () {
 Route::get('/support', function () {
     return view('support');
 })->name('support');
+
+Route::get('/info', function () {
+    return view('info');
+})->name('info');
+
+Route::get('/info/team', function () {
+    return view('team');
+})->name('team');
+
+Route::get('/info/data-center', function () {
+    return view('data-center');
+})->name('data-center');

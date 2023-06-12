@@ -1,0 +1,11 @@
+.navbar {
+    .dropdown-menu {
+        margin: .5rem 0 0;
+        border-top-left-radius: 0 !important;
+        border-top-right-radius: 0 !important;
+        border-top: none !important;
+    }
+    .navbar-brand {
+        padding-bottom: 0;
+    }
+}

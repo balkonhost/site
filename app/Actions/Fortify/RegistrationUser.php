@@ -10,6 +10,7 @@ use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Registration;
+use Carbon\Carbon;
 
 class RegistrationUser implements CreatesNewUsers
 {
@@ -38,6 +39,7 @@ class RegistrationUser implements CreatesNewUsers
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Str::random(8),
+            'created_at' => Carbon::now()
         ]);
 
         Cache::put($input['email'], $user);

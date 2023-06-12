@@ -39,15 +39,49 @@
     }
 
     .navbar {
-        background-color: #c00; // #00ccff // #000066;
+        background-color: $blue_dark;// #c00;
         &-brand {
             padding-top: 0;
         }
     }
 }
+
+.breadcrumb {
+    background-color: transparent;
+    padding: 0;
+    font-size: 0.8667em;
+    .breadcrumb-item {
+        a, &.active {
+            color: #bbbbbb;
+            text-decoration: none;
+        }
+        a:hover,
+        a:focus {
+            color: $blue_sky;
+        }
+    }
+    .breadcrumb-item + .breadcrumb-item::before {
+        display: inline-block;
+        padding-right: 0.5rem;
+        color: #dddddd;
+        content: "\2014";
+    }
+}
+
+.side {
+    .list-group-item {
+        padding: 1rem 1rem;
+        &.active {
+            background-color: $blue_sky;
+            border-color: $blue_sky;
+        }
+    }
+
+}
+
 .footer {
     color: #ffffff;
-    background-color: #333; //#c00;
+    background-color: $coal;
     .bi {
         position: absolute;
         width: 24px;
@@ -127,6 +161,33 @@
     &-copy {
         font-size: 13px;
     }
+    &-version {
+        color: #999999;
+        font-size: 13px;
+        a {
+            color: #999999;
+            text-decoration: none;
+            border-bottom: 1px solid #99999950;
+            &:hover,
+            &:focus {
+                color: #ffffff;
+                border-bottom-color: transparent;
+            }
+        }
+    }
+    &-social {
+        color: #999999;
+        a {
+            color: #999999;
+            text-decoration: none;
+            border-bottom: 1px solid #99999950;
+            &:hover,
+            &:focus {
+                color: #ffffff;
+                border-bottom-color: transparent;
+            }
+        }
+    }
 }
 
 /* Carousel base class */
@@ -137,6 +198,7 @@
         font-weight: 600;
     }
 }
+
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
     position: relative;
@@ -171,4 +233,8 @@
 }
 .carousel-indicators {
     z-index: 30;
+}
+
+.twitter-section {
+    border: 1px solid $blue_sky;
 }
