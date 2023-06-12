@@ -1,4 +1,4 @@
-@extends('main')
+@extends('layout')
 
 @section('slider')
     <div id="slider" class="carousel slide" data-ride="carousel">

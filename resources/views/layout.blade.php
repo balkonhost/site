@@ -105,6 +105,17 @@
                     @endif
                 </ul>
                 <ul class="navbar-nav ml-auto">
+                    @if (Route::has('support'))
+                        <li class="nav-item {{ Route::is('support*') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('support') }}">Поддержка</a>
+                        </li>
+                    @endif
+                    @if (Route::has('info'))
+                        <li class="nav-item {{ Route::is('info*') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('info') }}">О проекте</a>
+                        </li>
+                    @endif
+
                     @guest
                         @if (Route::has('home'))
                             <li class="nav-item {{ Route::is('home*') ? 'active' : '' }}">
@@ -112,35 +123,25 @@
                             </li>
                         @endif
                     @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    Личный кабинет
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Личный кабинет
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                @if (Route::has('home'))
+                                    <a class="dropdown-item" href="{{ route('home') }}">{{ Auth::user()->name }}</a>
+                                @endif
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    Выйти
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    @if (Route::has('home'))
-                                        <a class="dropdown-item" href="{{ route('home') }}">{{ Auth::user()->name }}</a>
-                                    @endif
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        Выйти
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
                     @endguest
-                        @if (Route::has('support'))
-                            <li class="nav-item {{ Route::is('support*') ? 'active' : '' }}">
-                                <a class="nav-link" href="{{ route('support') }}">Поддержка</a>
-                            </li>
-                        @endif
-                        @if (Route::has('info'))
-                            <li class="nav-item {{ Route::is('info*') ? 'active' : '' }}">
-                                <a class="nav-link" href="{{ route('info') }}">О проекте</a>
-                            </li>
-                        @endif
                 </ul>
             </div>
         </div>

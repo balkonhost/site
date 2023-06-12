@@ -1,4 +1,4 @@
-@extends('main')
+@extends('layout')
 
 @section('body')
     <body class="body-auth text-center vh-100">

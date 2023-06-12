@@ -1,8 +1,15 @@
-@extends('main')
+@extends('layout')
 
 @section('main')
-    <div class="container">
+    <div class="container my-5">
 
-        <h1>Welcome {{ auth()->user()->name }} !!</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ route('index') }}">Главная</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Личный кабинет</li>
+            </ol>
+        </nav>
+
+        <h1 class="mb-5">Привет {{ auth()->user()->name }}!</h1>
     </div>
 @endsection
