@@ -119,7 +119,11 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     @if (Route::has('home'))
+<<<<<<< HEAD
                                         <a class="dropdown-item" href="{{ route('home') }}">{{ Auth::user()->name }}</a>
+=======
+                                        <a class="dropdown-item" href="{{ route('home') }}">Личный кабинет</a>
+>>>>>>> Рабочая версия
                                     @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
