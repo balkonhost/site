@@ -119,15 +119,9 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     @if (Route::has('home'))
-<<<<<<< HEAD
                                         <a class="dropdown-item" href="{{ route('home') }}">{{ Auth::user()->name }}</a>
-=======
-                                        <a class="dropdown-item" href="{{ route('home') }}">Личный кабинет</a>
->>>>>>> Рабочая версия
                                     @endif
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         Выйти
                                     </a>
 
@@ -245,7 +239,7 @@
         </div>
         <div class="footer-social mt-5 text-center">
             <a href="https://vk.com/balkon.host" title="Вконтакте" target="_blank">Вконтакте</a> ·
-            <a href="https://t.me/balkonhost" title="Telegram" target="_blank">Telegram</a> ·
+            <del><a href="https://t.me/balkonhost" title="Telegram" target="_blank">Telegram</a></del> ·
             <del><a href="https://twitter.com/balkonhost" title="Telegram" target="_blank">Twitter</a></del> ·
             <del><a href="https://www.facebook.com/balkon.host" title="Facebook" target="_blank">Facebook</a></del> ·
             <del><a href="https://www.instagram.com/balkon.host" title="Instagram" target="_blank">Instagram</a></del>
