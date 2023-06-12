@@ -239,6 +239,13 @@
         <div class="footer-copy mt-3">
             © {{ date('Y') }}, {{ $message }}{{--Проект «Балкон.Хост» — неадекватный хостинг --}}
         </div>
+        <div class="footer-social mt-5 text-center">
+            <a href="https://vk.com/balkon.host" title="Вконтакте" target="_blank">Вконтакте</a> ·
+            <a href="https://t.me/balkonhost" title="Telegram" target="_blank">Telegram</a> ·
+            <del><a href="https://twitter.com/balkonhost" title="Telegram" target="_blank">Twitter</a></del> ·
+            <del><a href="https://www.facebook.com/balkon.host" title="Facebook" target="_blank">Facebook</a></del> ·
+            <del><a href="https://www.instagram.com/balkon.host" title="Instagram" target="_blank">Instagram</a></del>
+        </div>
         <div class="footer-version mt-5 text-center">
             Версия <a href="https://github.com/balkonhost/site/releases" target="_blank" title="Последная версия на GitHub">Pre-Alpha 0.0.2</a> · Дальше будет хуже
         </div>
@@ -248,10 +255,8 @@
 
 <script src="{{ mix('js/app.js') }}"></script>
 
-@if (!in_array(request()->ip(), ['::1', '127.0.0.1', '217.64.134.223', '95.78.167.221']))
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript" > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(65159950, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, trackHash:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/65159950" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    <!-- /Yandex.Metrika counter -->
+@if (!in_array(request()->ip(), ['::1', '127.0.0.1']))
+    <!-- Yandex.Metrika counter --> <script type="text/javascript" > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(65159950, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, trackHash:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/65159950" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
 @endif
 </body>
 </html>

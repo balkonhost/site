@@ -175,6 +175,19 @@
             }
         }
     }
+    &-social {
+        color: #999999;
+        a {
+            color: #999999;
+            text-decoration: none;
+            border-bottom: 1px solid #99999950;
+            &:hover,
+            &:focus {
+                color: #ffffff;
+                border-bottom-color: transparent;
+            }
+        }
+    }
 }
 
 /* Carousel base class */
@@ -219,4 +232,8 @@
 }
 .carousel-indicators {
     z-index: 30;
+}
+
+.twitter-section {
+    border: 1px solid #c00;
 }

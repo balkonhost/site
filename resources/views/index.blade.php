@@ -64,8 +64,17 @@
     </div>
     <div style="border-bottom: 1px solid #eff1f5;" class="py-5">
         <div class="container">
-            <h3>Новости и акции</h3>
-
+            <div class="row">
+                <div class="col-md-12 col-lg-8">
+                    <h3>Новости и акции</h3>
+                </div>
+                <div class="col-md-12 col-lg-4">
+                    <h3>Твитим на балконе</h3>
+                    <div class="twitter-section">
+                        <a class="twitter-timeline" data-lang="ru" data-height="600" data-theme="light" href="https://twitter.com/balkonhost?ref_src=twsrc%5Etfw">Tweets by balkonhost</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div style="background: #f8f9fb; border-bottom: 1px solid #eff1f5;" class="py-5">
