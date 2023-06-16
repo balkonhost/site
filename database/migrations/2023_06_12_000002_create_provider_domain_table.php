@@ -24,7 +24,10 @@ return new class extends Migration
                 ->cascadeOnDelete()
                 ->comment('Идентификатор домена');
 
+            $table->string('service_id')->comment('Идентификатор у поставщика услуг');
+
             $table->unique(['provider_id', 'domain_id']);
+            $table->unique(['provider_id', 'service_id']);
         });
     }
 
