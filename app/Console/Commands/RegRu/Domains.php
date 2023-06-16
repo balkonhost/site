@@ -7,14 +7,14 @@ use App\Services\RegRu\DomainService;
 use App\Models\Provider;
 use \App\Models\Domain;
 
-class GetDomains extends Command
+class Domains extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'reg-ru:get-domains';
+    protected $signature = 'reg-ru:domains';
 
     /**
      * The console command description.
