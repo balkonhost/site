@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Provider extends Model
 {
@@ -37,7 +38,6 @@ class Provider extends Model
 
     public function domains(): BelongsToMany
     {
-        return $this->belongsToMany(Domain::class);
+        return $this->belongsToMany(Domain::class, 'provider_domain');
     }
-
 }
