@@ -12,6 +12,7 @@
         "balkonhost/reg-api": "^0.0.6",
         "doctrine/dbal": "^3.6",
         "guzzlehttp/guzzle": "^7.5",
+        "io-developer/php-whois": "^4.1",
         "irazasyed/telegram-bot-sdk": "^3.13",
         "koot-labs/telegram-bot-dialogs": "^0.5.2",
         "laravel/fortify": "^1.17",

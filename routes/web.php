@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use Iodev\Whois\Factory;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +19,22 @@ Route::get('/', function () {
     return view('index');
 })->name('index');
 
-Route::get('/domain', function () {
-    return view('domain');
-})->name('domain');
+Route::group(['prefix' => 'domain'], function () {
+    Route::get('', function () {
+        return view('domain');
+    })->name('domain');
+
+    Route::get('whois', function (Request $request, Factory $factory) {
+        $view = view('domain.whois');
+
+        if ($domain = $request->get('domain')) {
+            $whois = $factory->createWhois()->lookupDomain($domain);
+            $view->with('whois', $whois);
+        }
+
+        return $view;
+    })->name('domain.whois')->middleware('throttle:1,0.02');
+});
 
 Route::get('/hosting', function () {
     return view('hosting');

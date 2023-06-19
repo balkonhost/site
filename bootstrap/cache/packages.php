@@ -1,4 +1,15 @@
 <?php return array (
+  'balkonhost/reg-api' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'RegApi\\Providers\\RegServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Reg' => 'RegApi\\Facades\\Reg',
+    ),
+  ),
   'irazasyed/telegram-bot-sdk' => 
   array (
     'aliases' => 
@@ -78,6 +89,13 @@
     'providers' => 
     array (
       0 => 'Termwind\\Laravel\\TermwindServiceProvider',
+    ),
+  ),
+  'spatie/laravel-data' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Spatie\\LaravelData\\LaravelDataServiceProvider',
     ),
   ),
   'spatie/laravel-ignition' => 
