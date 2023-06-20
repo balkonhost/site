@@ -7,9 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+use Bavix\Wallet\Traits\HasWallet;
+use Bavix\Wallet\Interfaces\Wallet;
+
+class User extends Authenticatable implements Wallet
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HasWallet;
 
     /**
      * The attributes that are mass assignable.
