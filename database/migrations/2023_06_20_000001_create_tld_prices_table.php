@@ -17,10 +17,10 @@ return new class extends Migration
             $table->id()->comment('Идентификатор');
             $table->foreignId('tld_id')->constrained('tlds')->cascadeOnDelete()->comment('Идентификатор домена');
             $table->foreignId('provider_id')->constrained('providers')->cascadeOnDelete()->comment('Идентификатор поставщика');
-            $table->unsignedInteger('reg_price')->comment('Стоимость регистрации');
-            $table->unsignedInteger('renew_price')->comment('Стоимость продления регистрации');
-            $table->unsignedInteger('retail_reg_price')->comment('Розничная стоимость регистрации');
-            $table->unsignedInteger('retail_renew_price')->comment('Розничная стоимость продления регистрации');
+            $table->decimal('reg_price')->comment('Стоимость регистрации');
+            $table->decimal('renew_price')->comment('Стоимость продления регистрации');
+            $table->decimal('retail_reg_price')->comment('Розничная стоимость регистрации');
+            $table->decimal('retail_renew_price')->comment('Розничная стоимость продления регистрации');
             $table->timestamps();
         });
     }

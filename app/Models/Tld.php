@@ -43,4 +43,9 @@ class Tld extends Model
     {
         return $this->hasMany(TldPrice::class);
     }
+
+    public function active()
+    {
+        return $this->join('provider_tld', 'provider_tld.tld_id', 'tlds.id');
+    }
 }

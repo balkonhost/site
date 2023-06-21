@@ -6,9 +6,9 @@ use Spatie\LaravelData\Data;
 class PriceData extends Data
 {
     public function __construct(
-        public int $reg_price,
-        public int $renew_price,
-        public int $retail_reg_price,
-        public int $retail_renew_price,
+        public float $reg_price,
+        public float $renew_price,
+        public float $retail_reg_price,
+        public float $retail_renew_price,
     ) {}
 }
