@@ -21,6 +21,8 @@ Route::get('/', function () {
 Route::group(['prefix' => 'domain'], function () {
     Route::get('', [DomainController::class, 'index'])
         ->name('domain');
+    Route::post('', [DomainController::class, 'check'])
+        ->name('domain.check')->middleware('throttle:1,0.02');
     Route::get('whois', [DomainController::class, 'whois'])
         ->name('domain.whois')
         ->middleware('throttle:1,0.02');

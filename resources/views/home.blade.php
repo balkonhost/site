@@ -10,6 +10,7 @@
             </ol>
         </nav>
 
-        <h1 class="mb-5">Привет {{ auth()->user()->name }}!</h1>
+        <h1>Привет {{ auth()->user()->name }}!</h1>
+        <p>У которо(го|й) на счете {{ auth()->user()->balance }} ₽. <a href="{{ route('home.balance') }}" title="История операций">Глянем</a> как так вышло?</p>
     </div>
 @endsection
