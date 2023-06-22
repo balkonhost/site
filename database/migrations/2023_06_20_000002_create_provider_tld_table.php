@@ -24,8 +24,8 @@ return new class extends Migration
                 ->cascadeOnDelete()
                 ->comment('Идентификатор домена');
 
-            $table->unsignedInteger('reg_price')->comment('Стоимость регистрации');
-            $table->unsignedInteger('renew_price')->comment('Стоимость продления регистрации');
+            $table->decimal('reg_price', '12')->comment('Стоимость регистрации');
+            $table->decimal('renew_price', '12')->comment('Стоимость продления регистрации');
 
             $table->unique(['provider_id', 'tld_id']);
         });

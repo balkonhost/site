@@ -237,7 +237,7 @@
                             @if (Route::has('info'))
                                 <li class="{{ Route::is('info*') ? 'active' : '' }}"><a href="{{ route('info') }}">О проекте</a></li>
                             @endif
-                            <li><a href="">О лицензировании</a></li>
+                            <!--li><a href="">О лицензировании</a></li-->
                         </ul>
                     </div>
                 </div>
