@@ -52,4 +52,12 @@ class DomainController extends Controller
 
         return $view;
     }
+
+    public function list()
+    {
+        $user = auth()->user();
+        $domains = $user->domains()->paginate(25);
+
+        return view('home.domain', compact('domains'));
+    }
 }

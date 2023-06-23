@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BalanceController;
+use App\Http\Controllers\DomainController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,4 +21,8 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'balance'], function () {
     Route::get('', [BalanceController::class, 'index'])->name('home.balance');
+});
+
+Route::group(['prefix' => 'domain'], function () {
+    Route::get('', [DomainController::class, 'list'])->name('home.domain');
 });

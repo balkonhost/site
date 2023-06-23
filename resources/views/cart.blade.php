@@ -40,6 +40,15 @@
             </div>
 
             <div class="my-5">Итого: {{ $total }} ₽</div>
+
+            @guest
+                <div>
+                    Для оформления заказа вам необходимо
+                    <a href="{{ route('login') }}" title="Авторизоваться">авторизоваться</a> или
+                    <a href="{{ route('register') }}" title="Зарегистрироваться">зарегистрироваться</a>.
+                </div>
+            @else
+            @endguest
         @endif
     </div>
 @endsection
