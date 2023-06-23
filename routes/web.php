@@ -67,3 +67,8 @@ Route::group(['prefix' => 'cart'], function () {
     Route::get('remove', [CartController::class, 'remove'])->name('cart.remove');
     Route::get('clear', [CartController::class, 'clear'])->name('cart.clear');
 });
+
+Route::post('/logout', function () {
+    auth()->guard()->logout();
+    return redirect()->back();
+})->name('logout');

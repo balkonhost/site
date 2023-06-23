@@ -9,10 +9,14 @@
         config('app.name') ." — : [:]|||||||||||[:] на районе",
         config('app.name') ." — проект\r\n неадекватного хостинга",
         config('app.name') ." — через жопу, но с душой",
-        //config('app.name') ." — cамый\r\n стебанутый хостинг в России"
+        config('app.name') ." — cамый\r\n стебанутый хостинг России"
     ];
     $key = array_rand($messages);
     $message = $messages[$key];
+
+    $cartTotal = Cart::getTotal();
+    $cartItemCount = Cart::getContent()->count();
+    $user = auth()->user();
 @endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-100">
@@ -61,8 +65,15 @@
         <div class="header-description">{!! nl2br($message) !!}</div>
         <div class="header-support ml-auto d-none d-lg-block">
             <div class="text-right">
-                <div>Техподдержка клиентов: <a href="mailto:fuckup@balkon.host">fuckup@balkon.host</a></div>
-                <div class="text-muted">вам все равно не поможет</div>
+                @if ($cartTotal)
+                    @if (Route::has('cart'))
+                        <div>{{ $cartItemCount }} чего-то там в <a href="{{ route('cart') }}" title="Перейти в корзину">корзине</a></div>
+                        <div class="text-muted">на {{ $cartTotal }} рублей.</div>
+                    @endif
+                @else
+                    <div>Техподдержка клиентов: <a href="mailto:fuckup@balkon.host">fuckup@balkon.host</a></div>
+                    <div class="text-muted">вам все равно не поможет</div>
+                @endif
             </div>
         </div>
     </div>
@@ -113,17 +124,6 @@
                     @endif
                 </ul>
                 <ul class="navbar-nav ml-auto">
-                    @if (Route::has('support'))
-                        <li class="nav-item {{ Route::is('support*') ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ route('support') }}">Поддержка</a>
-                        </li>
-                    @endif
-                    @if (Route::has('info'))
-                        <li class="nav-item {{ Route::is('info*') ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ route('info') }}">О проекте</a>
-                        </li>
-                    @endif
-
                     @guest
                         @if (Route::has('home'))
                             <li class="nav-item {{ Route::is('home*') ? 'active' : '' }}">
@@ -138,7 +138,7 @@
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 @if (Route::has('home'))
-                                    <a class="dropdown-item" href="{{ route('home') }}">{{ Auth::user()->name }}</a>
+                                    <a class="dropdown-item" href="{{ route('home') }}">{{ $user->name }}</a>
                                 @endif
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     Выйти
