@@ -15,7 +15,7 @@
                     </svg>
                 </a>
 
-                <h1 class="h3 mb-3 fw-normal">Регистрация</h1>
+                <h1 class="mb-3">Регистрация</h1>
 
                 <label for="email" class="visually-hidden">E-мail адрес</label>
                 <input type="email" id="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="E-мail адрес" value="{{ old('email') }}" required autocomplete="email" autofocus>

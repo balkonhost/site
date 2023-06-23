@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Iodev\Whois\Exceptions\ServerMismatchException;
 use Iodev\Whois\Factory;
 use App\Models\Tld;
 
@@ -21,14 +22,16 @@ class DomainController extends Controller
 
         $view = view('domain')->with('tlds', $tld->active()->get());
 
-        if (($domain = $request->get('domain')) && preg_match('/^[-a-z0-9]+\.[a-z]{2,6}$/', $domain)) {
+        $domain = mb_strtolower($request->get('domain'));
+
+        if ($domain && preg_match('/^[\p{L}\p{N}-]+\.[\p{L}\p{N}]+$/u', $domain)) {
             $parts = explode('.', $domain, 2);
             $tld = $tld->where('tld', end($parts))->with('prices')->first();
 
             $whois = $factory->createWhois();
             try {
                 $available = $whois->isDomainAvailable($domain);
-            } catch (Iodev\Whois\Exceptions\ServerMismatchException $exception) {
+            } catch (ServerMismatchException $exception) {
                 $available = false;
             }
 

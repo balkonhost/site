@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DomainController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,3 +60,10 @@ Route::get('/info/team', function () {
 Route::get('/info/data-center', function () {
     return view('data-center');
 })->name('data-center');
+
+Route::group(['prefix' => 'cart'], function () {
+    Route::get('', [CartController::class, 'list'])->name('cart');
+    Route::post('add', [CartController::class, 'add'])->name('cart.add');
+    Route::get('remove', [CartController::class, 'remove'])->name('cart.remove');
+    Route::get('clear', [CartController::class, 'clear'])->name('cart.clear');
+});

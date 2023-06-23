@@ -8,11 +8,6 @@ class BalanceController extends Controller
     {
         $user = auth()->user();
 
-        /*$user->deposit(2000, [
-            'description' => 'Пополнение баланса.',
-            'comment' => 'Безналичный перевод от юридического лица.'
-        ]);*/
-
         $transactions = $user->transactions()
             ->orderByDesc('created_at')
             ->paginate(25);

@@ -11,6 +11,6 @@
         </nav>
 
         <h1>Привет {{ auth()->user()->name }}!</h1>
-        <p>У которо(го|й) на счете {{ auth()->user()->balance }} ₽. <a href="{{ route('home.balance') }}" title="История операций">Глянем</a> как так вышло?</p>
+        <p>У которого на счете {{ auth()->user()->balance }} ₽. <a href="{{ route('home.balance') }}" title="История операций">Глянем</a> как так вышло?</p>
     </div>
 @endsection
