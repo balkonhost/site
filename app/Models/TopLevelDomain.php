@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Tld extends Model
+class TopLevelDomain extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -13,10 +13,10 @@ class Tld extends Model
      * @var array
      */
     protected $fillable = [
-        'tld',
+        'domain',
         'idn',
-        'reg_min_period',
-        'reg_max_period',
+        'new_min_period',
+        'new_max_period',
         'renew_min_period',
         'renew_max_period',
     ];
@@ -41,11 +41,6 @@ class Tld extends Model
 
     public function prices(): HasMany
     {
-        return $this->hasMany(TldPrice::class);
-    }
-
-    public function active()
-    {
-        return $this->join('provider_tld', 'provider_tld.tld_id', 'tlds.id');
+        return $this->hasMany(TopLevelDomainPrice::class);
     }
 }
