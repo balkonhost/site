@@ -13,7 +13,7 @@ class Domain extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
+        'domain',
         'state',
         'creation_date',
         'expiration_date',
