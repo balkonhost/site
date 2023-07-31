@@ -21,7 +21,7 @@ class Domains extends Command
      *
      * @var string
      */
-    protected $description = 'Getting a list of domains with REG.RU';
+    protected $description = 'Получение списка зарегистрированных доменов в REG.RU';
 
     /**
      * Execute the console command.
@@ -35,15 +35,15 @@ class Domains extends Command
         if ($provider = Provider::find(1)) {
             // Обновление данных по доменам
             collect($domains)->each(function ($item) use ($provider) {
-                $domain = Domain::updateOrCreate(['name' => $item->name], $item->toArray());
+                $domain = Domain::updateOrCreate(['domain' => $item->domain], $item->toArray());
                 if ($domain->wasRecentlyCreated === true) {
                     $provider->domains()->attach([$domain->id], ['service_id' => $item->service_id]);
                 }
             });
 
             // Удаление не используемых доменов
-            if ($names = array_column($domains, 'name')) {
-                $provider->domains()->whereNotIn('name', $names)->each(function ($item) {
+            if ($names = array_column($domains, 'domain')) {
+                $provider->domains()->whereNotIn('domain', $names)->each(function ($item) {
                     $item->delete();
                 });
             }
