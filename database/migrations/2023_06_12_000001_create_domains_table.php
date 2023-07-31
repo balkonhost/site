@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('domains', function (Blueprint $table) {
             $table->id()->comment('Идентификатор');
-            $table->string('name')->unique()->comment('Доменное имя');
+            $table->string('domain')->unique('domain_unique')->comment('Доменное имя');
             $table->enum('state', ['active', 'inactive', 'suspended', 'deleted', 'moved'])->default('inactive')->comment('Состояние');
             $table->date('creation_date');
             $table->date('expiration_date');
