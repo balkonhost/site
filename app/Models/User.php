@@ -50,4 +50,9 @@ class User extends Authenticatable implements Wallet
     {
         return $this->belongsToMany(Domain::class, 'user_domain');
     }
+
+    public function hostings(): BelongsToMany
+    {
+        return $this->belongsToMany(Hosting::class, 'user_hosting');
+    }
 }
