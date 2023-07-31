@@ -1,11 +1,10 @@
 <?php
 namespace App\Console\Commands\RegRu;
 
-use App\UserDomain;
 use Illuminate\Console\Command;
 use App\Services\RegRu\DomainService;
 use App\Models\Provider;
-use \App\Models\Domain;
+use App\Models\Domain;
 
 class Domains extends Command
 {
@@ -28,7 +27,7 @@ class Domains extends Command
      *
      * @return mixed
      */
-    public function handle(DomainService $domainService)
+    public function handle(DomainService $domainService): void
     {
         $domains = $domainService->getDomains();
 
