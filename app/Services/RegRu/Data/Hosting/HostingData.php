@@ -1,5 +1,5 @@
 <?php
-namespace App\Services\RegRu\Data;
+namespace App\Services\RegRu\Data\Hosting;
 
 use Spatie\LaravelData\Data;
 

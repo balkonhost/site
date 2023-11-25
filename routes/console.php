@@ -1,5 +1,6 @@
 <?php
 
+use App\Services\RegRu\HostingService;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
@@ -19,7 +20,8 @@ Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
 
-Artisan::command('test', function () {
+Artisan::command('test', function (HostingService $hostingService) {
+    print_r($hostingService->getPrices());
     // ...
 })->purpose('Testing');
 

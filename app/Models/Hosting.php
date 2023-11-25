@@ -3,9 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class TldPrice extends Model
+class Hosting extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -13,12 +13,8 @@ class TldPrice extends Model
      * @var array
      */
     protected $fillable = [
-        'tld_id',
-        'provider_id',
-        'reg_price',
-        'renew_price',
-        'retail_reg_price',
-        'retail_renew_price',
+        'creation_date',
+        'expiration_date',
     ];
 
     /**
@@ -39,13 +35,8 @@ class TldPrice extends Model
         // ...
     ];
 
-    public function tld(): hasOne
+    public function provider(): BelongsTo
     {
-        return $this->hasOne(Tld::class);
-    }
-
-    public function provider(): hasOne
-    {
-        return $this->hasOne(Provider::class);
+        return $this->belongsTo(Provider::class);
     }
 }

@@ -9,14 +9,14 @@ class PriceData extends Data
         //public $extcreate_price_eq_renew,
         public string $domain,
         public bool $idn,
-        public int $reg_min_period,
-        public int $reg_max_period,
+        public int $new_min_period,
+        public int $new_max_period,
         public int $renew_min_period,
         public int $renew_max_period,
-        public float $price_reg,
-        public float $price_renew,
-        public float $retail_price_reg,
-        public float $retail_price_renew,
+        public float $cost_new_price,
+        public float $cost_renew_price,
+        public float $retail_new_price,
+        public float $retail_renew_price,
     ) {}
 
     public static function from(mixed ...$payloads): static

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DomainController;
 use App\Http\Controllers\CartController;
+use App\Services\RegRu\DomainService;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,3 +73,14 @@ Route::post('/logout', function () {
     auth()->guard()->logout();
     return redirect()->back();
 })->name('logout');
+
+
+Route::get('/test', function (DomainService $service) {
+    dd($service->getPrices());
+    echo 'test';
+});
+
+Route::get('/test', function () {
+    $user = \App\Models\User::find(0);
+    dd($user->domains);
+});

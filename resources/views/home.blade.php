@@ -40,6 +40,14 @@
                             @endif
                         @endif
 
+                        @if (Route::has('home.hosting'))
+                            @if (Route::is('home.hosting*'))
+                                <a href="{{ route('home.hosting') }}" class="list-group-item list-group-item-action active" aria-current="true">Хостинг</a>
+                            @else
+                                <a href="{{ route('home.hosting') }}" class="list-group-item list-group-item-action">Хостинг</a>
+                            @endif
+                        @endif
+
                     </div>
                 </div>
             </div>

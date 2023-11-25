@@ -1,21 +1,23 @@
 <?php
 
-namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class Provider extends Model
+class ProviderTopLevelDomain extends Model
 {
-
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name',
-        'created_at'
+        'provider_id',
+        'top_level_domain_id',
+        'new_price',
+        'renew_price',
+        'retail_new_price',
+        'retail_renew_price',
     ];
 
     /**
@@ -36,13 +38,13 @@ class Provider extends Model
         // ...
     ];
 
-    public function domains(): BelongsToMany
+    public function topLevelDomain(): hasOne
     {
-        return $this->belongsToMany(Domain::class, 'provider_domain');
+        return $this->hasOne(\App\Models\TopLevelDomain::class);
     }
 
-    public function topLevelDomains(): BelongsToMany
+    public function provider(): hasOne
     {
-        return $this->belongsToMany(TopLevelDomain::class, 'provider_top_level_domain');
+        return $this->hasOne(\App\Models\Provider::class);
     }
 }

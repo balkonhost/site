@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class TopLevelDomain extends Model
 {
@@ -39,8 +39,8 @@ class TopLevelDomain extends Model
         // ...
     ];
 
-    public function prices(): HasMany
+    public function provider(): BelongsTo
     {
-        return $this->hasMany(TopLevelDomainPrice::class);
+        return $this->belongsTo(Provider::class);
     }
 }
