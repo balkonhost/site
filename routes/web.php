@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DomainController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\BlogController;
 use App\Services\RegRu\DomainService;
+use App\Models\Admin;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +18,16 @@ use App\Services\RegRu\DomainService;
 |
 */
 
+// Главная
 Route::get('/', function () {
     return view('index');
 })->name('index');
+
+// Разговоры на балконе
+Route::group(['prefix' => 'blog'], function () {
+    Route::get('/', 'BlogController@index')->name('blog');
+    Route::get('/{post}', 'BlogController@show')->name('blog.show');
+});
 
 Route::group(['prefix' => 'domain'], function () {
     Route::get('', [DomainController::class, 'index'])
@@ -54,8 +63,8 @@ Route::get('/info', function () {
     return view('info');
 })->name('info');
 
-Route::get('/info/team', function () {
-    return view('team');
+Route::get('/info/team', function (Admin $admin) {
+    return view('team',  ['admins' => $admin->all()]);
 })->name('team');
 
 Route::get('/info/data-center', function () {
@@ -74,11 +83,10 @@ Route::post('/logout', function () {
     return redirect()->back();
 })->name('logout');
 
-
-Route::get('/test', function (DomainService $service) {
-    dd($service->getPrices());
-    echo 'test';
-});
+//Route::get('/test', function (DomainService $service) {
+//    dd($service->getPrices());
+//    echo 'test';
+//});
 
 Route::get('/test', function () {
     $user = \App\Models\User::find(0);
