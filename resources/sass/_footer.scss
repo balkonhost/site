@@ -1,0 +1,53 @@
+.footer {
+    color: $white;
+    background-color: $blue;
+    font-size: 0.815em;
+    line-height: 1.385em;
+
+    a {
+        color: $white;
+        text-decoration: none;
+        border-bottom: 1px solid #{rgba($white, .5)};
+        &:hover {
+            border-bottom: 1px solid transparent;
+            color: #{rgba($white, .9)};
+        }
+    }
+
+    .bi {
+        position: absolute;
+        width: 24px;
+        left: 0;
+    }
+
+    &-lic {
+        margin-bottom: 30px;
+        padding-left: 40px;
+        position: relative;
+    }
+
+    &-menu {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        line-height: 22px;
+        counter-reset: count;
+        padding: 0;
+
+        li {
+            position: relative;
+            vertical-align: top;
+            padding-left: 27px;
+
+            &:before {
+                top: 12px;
+                content: "";
+                position: absolute;
+                left: 0;
+                width: 12px;
+                height: 1px;
+                background-color: #{rgba($white, .5)};
+            }
+        }
+    }
+}
