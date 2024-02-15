@@ -1,13 +1,22 @@
 @import "bootstrap/scss/_navbar";
 
 .navbar {
+    background-color: $blue;
+
     &-brand {
         padding-top: 0;
-    }
-}
 
-.navbar {
-    background-color: $blue;
+        svg {
+            path {
+                fill: $white;
+                fill-rule: evenodd;
+                &:last-child {
+                    fill: $heavenly;
+                }
+            }
+
+        }
+    }
 
     .dropdown-menu {
         //margin: .5rem 0 0;
