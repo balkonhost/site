@@ -1,50 +1,4 @@
-.header {
-    &-logo {
-        padding: 28px 0 32px;
-    }
-    &-description {
-        color: #999;
-        vertical-align: middle;
-        font-size: 0.8667em;
-        line-height: 1.5385em;
-        margin-left: 60px;
-        span {
-            opacity: 1;
-            transition: .35s linear;
-        }
-    }
-    &-support {
-        color: #333;
-        vertical-align: middle;
-        font-size: 0.8667em;
-        line-height: 1.5385em;
-        .text-muted {
-            color: #999 !important;
-        }
-        a {
-            text-decoration: none;
-            color: #333;
-            border-bottom: 1px solid #33333350;
-            &:hover {
-                border-bottom: 1px solid transparent;
-            }
-        }
-    }
-    &:hover {
-        .header-description {
-            span {
-                opacity: .5;
-            }
-        }
-    }
 
-    .navbar {
-        background-color: $blue_dark;// #c00;
-        &-brand {
-            padding-top: 0;
-        }
-    }
-}
 
 .breadcrumb {
     background-color: transparent;
@@ -57,7 +11,7 @@
         }
         a:hover,
         a:focus {
-            color: $blue_sky;
+            color: $heavenly;
         }
     }
     .breadcrumb-item + .breadcrumb-item::before {
@@ -72,8 +26,8 @@
     .list-group-item {
         padding: 1rem 1rem;
         &.active {
-            background-color: $blue_sky;
-            border-color: $blue_sky;
+            background-color: $heavenly;
+            border-color: $heavenly;
         }
     }
 
@@ -107,117 +61,6 @@
             background-repeat: no-repeat;
             background-position: center;
             background-size: 11px 11px;
-        }
-    }
-}
-
-.footer {
-    color: #ffffff;
-    background-color: $coal;
-    .bi {
-        position: absolute;
-        width: 24px;
-        left: 0;
-    }
-    &-lic {
-        font-size: 0.815em;
-        line-height: 1.385em;
-        margin-bottom: 30px;
-        padding-left: 40px;
-        position: relative;
-        a {
-            color: #ffffff;
-            text-decoration: none;
-            border-bottom: 1px solid #ffffff50;
-            &:hover {
-                border-bottom: 1px solid transparent;
-                color: #ffffff90;
-            }
-        }
-    }
-    .footer-menu {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        line-height: 22px;
-
-        counter-reset: count;
-        padding: 0;
-        //display: flex;
-        //flex-wrap: wrap;
-
-        li {
-            position: relative;
-            //display: inline-block;
-            vertical-align: top;
-            padding-left: 27px;
-            //width: 33.3%;
-
-            &:before {
-                top: 14px;
-                content: "";
-                position: absolute;
-                //top: 18px;
-                left: 0;
-                width: 12px;
-                height: 1px;
-                background-color: #99999950;
-            }
-            a {
-                position: relative;
-                display: inline-block;
-                vertical-align: top;
-                text-decoration: none;
-                font-size: 13px;
-                line-height: 28px;
-                color: #999999;
-                &:after {
-                    content: "";
-                    position: absolute;
-                    bottom: 5px;
-                    left: 0;
-                    right: 0;
-                    width: 100%;
-                    height: 1px;
-                    background-color: #99999950;
-                }
-                &:hover {
-                    color: #ffffff;
-                    &:after {
-                        background-color: transparent;
-                    }
-                }
-            }
-        }
-    }
-    &-copy {
-        font-size: 13px;
-    }
-    &-version {
-        color: #999999;
-        font-size: 13px;
-        a {
-            color: #999999;
-            text-decoration: none;
-            border-bottom: 1px solid #99999950;
-            &:hover,
-            &:focus {
-                color: #ffffff;
-                border-bottom-color: transparent;
-            }
-        }
-    }
-    &-social {
-        color: #999999;
-        a {
-            color: #999999;
-            text-decoration: none;
-            border-bottom: 1px solid #99999950;
-            &:hover,
-            &:focus {
-                color: #ffffff;
-                border-bottom-color: transparent;
-            }
         }
     }
 }
@@ -268,5 +111,5 @@
 }
 
 .twitter-section {
-    border: 1px solid $blue_sky;
+    border: 1px solid $heavenly;
 }

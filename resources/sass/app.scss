@@ -16,7 +16,7 @@
 //@import "bootstrap/scss/type";
 //@import "bootstrap/scss/images";
 @import "bootstrap/scss/_containers";
-//@import "bootstrap/scss/grid";
+@import "bootstrap/scss/_grid";
 //@import "bootstrap/scss/tables";
 //@import "bootstrap/scss/forms";
 //@import "bootstrap/scss/buttons";
@@ -27,7 +27,7 @@
 @import "_navbar";
 //@import "bootstrap/scss/card";
 //@import "bootstrap/scss/accordion";
-//@import "bootstrap/scss/breadcrumb";
+//@import "bootstrap/scss/_breadcrumb";
 //@import "bootstrap/scss/pagination";
 //@import "bootstrap/scss/badge";
 //@import "bootstrap/scss/alert";
@@ -38,7 +38,7 @@
 //@import "bootstrap/scss/modal";
 //@import "bootstrap/scss/tooltip";
 //@import "bootstrap/scss/popover";
-//@import "bootstrap/scss/carousel";
+@import "_carousel";
 //@import "bootstrap/scss/spinners";
 //@import "bootstrap/scss/offcanvas";
 //@import "bootstrap/scss/placeholders";
@@ -50,8 +50,6 @@
 @import "bootstrap/scss/utilities/_api";
 // scss-docs-end import-stack
 
-
-//@import "header";
+@import "_footer";
 //@import "custom";
-//@import "navbar";
 //@import "auth";
