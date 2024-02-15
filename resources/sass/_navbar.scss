@@ -1,8 +1,18 @@
+@import "bootstrap/scss/_navbar";
+
 .navbar {
+    &-brand {
+        padding-top: 0;
+    }
+}
+
+.navbar {
+    background-color: $blue;
+
     .dropdown-menu {
-        margin: .5rem 0 0;
-        border-top-left-radius: 0 !important;
-        border-top-right-radius: 0 !important;
-        border-top: none !important;
+        //margin: .5rem 0 0;
+        //border-top-left-radius: 0 !important;
+        //border-top-right-radius: 0 !important;
+        //border-top: none !important;
     }
 }
