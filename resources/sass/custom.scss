@@ -1,27 +1,5 @@
 
 
-.breadcrumb {
-    background-color: transparent;
-    padding: 0;
-    font-size: 0.8667em;
-    .breadcrumb-item {
-        a, &.active {
-            color: #bbbbbb;
-            text-decoration: none;
-        }
-        a:hover,
-        a:focus {
-            color: $heavenly;
-        }
-    }
-    .breadcrumb-item + .breadcrumb-item::before {
-        display: inline-block;
-        padding-right: 0.5rem;
-        color: #dddddd;
-        content: "\2014";
-    }
-}
-
 .side {
     .list-group-item {
         padding: 1rem 1rem;
