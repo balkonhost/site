@@ -24,14 +24,16 @@ Route::get('/', function () {
 })->name('index');
 
 // Разговоры на балконе
-/*Route::resource('blog', PostController::class)->names([
-    'index' => 'blog',
-    'create' => 'blog.create',
-    'edit' => 'blog.edit',
-    'update' => 'blog.update',
-    'show' => 'blog.show',
-    'destroy' => 'blog.destroy'
-]);*/
+Route::resource('razgovory', PostController::class)->names([
+    'index' => 'post',
+    'create' => 'post.create',
+    'store' => 'post.store',
+    'edit' => 'post.edit',
+    'update' => 'post.update',
+    'show' => 'post.show',
+    'destroy' => 'post.destroy'
+]);
+Route::post('uploads', [PostController::class, 'uploadImage'])->name('posts.upload');
 
 /*Route::group(['prefix' => 'domain'], function () {
     Route::get('', [DomainController::class, 'index'])
