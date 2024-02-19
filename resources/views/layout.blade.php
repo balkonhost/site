@@ -61,7 +61,7 @@
                         </g>
                     </svg>
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
@@ -101,22 +101,27 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Личный кабинет
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <ul class="dropdown-menu">
                                     @if (Route::has('home'))
-                                        <a class="dropdown-item" href="{{ route('home') }}">{{ $user->name }}</a>
+                                        <li>
+                                            <a class="dropdown-item" href="{{ route('home') }}">{{ $user->name }}</a>
+                                        </li>
                                     @endif
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        Выйти
-                                    </a>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            Выйти
+                                        </a>
+                                    </li>
+                                </ul>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
                             </li>
                         @endguest
                     </ul>
@@ -206,6 +211,9 @@
                                 @if (Route::has('info'))
                                     <li class="{{ Route::is('info*') ? 'active' : '' }}"><a href="{{ route('info') }}">О проекте</a></li>
                                 @endif
+                                @if (Route::has('post'))
+                                    <li class="{{ Route::is('post*') ? 'active' : '' }}"><a href="{{ route('post') }}">Разговоры на балконе</a></li>
+                                @endif
                                 <!--li><a href="">О лицензировании</a></li-->
                             </ul>
                         </div>
@@ -231,7 +239,9 @@
 
     <script src="{{ mix('js/app.js') }}"></script>
 
-    @if (!in_array(request()->ip(), ['::1', '127.0.0.1', '217.64.132.174']))
+    @yield('script')
+
+    @if (!in_array(request()->ip(), ['::1', '127.0.0.1', '217.64.132.174', '217.64.134.161']))
         <!-- Yandex.Metrika counter --> <script type="text/javascript" > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(65159950, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, trackHash:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/65159950" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
     @endif
 </body>
