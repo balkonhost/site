@@ -65,13 +65,13 @@ Route::post('uploads', [PostController::class, 'uploadImage'])->name('posts.uplo
     return view('support');
 })->name('support');*/
 
-/*Route::get('/info', function () {
+Route::get('info', function () {
     return view('info');
-})->name('info');*/
+})->name('info');
 
-/*Route::get('/info/team', function (Admin $admin) {
+Route::get('info/team', function (Admin $admin) {
     return view('team',  ['admins' => $admin->all()]);
-})->name('team');*/
+})->name('team');
 
 /*Route::get('/info/data-center', function () {
     return view('data-center');

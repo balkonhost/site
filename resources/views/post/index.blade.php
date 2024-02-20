@@ -14,20 +14,12 @@
 
         <h1 class="mb-5">Разговоры на балконе</h1>
 
-        <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="row">
             @foreach($posts as $post)
-                <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <blockquote class="blockquote mb-0">
-                                <p><a href="{{ route('post.show', $post->id) }}">{{ $post->title }}</a></p>
-                                <footer class="blockquote-footer">{{ mb_substr(strip_tags(html_entity_decode($post->description)), 0, 200) }}...</footer>
-                            </blockquote>
-                        </div>
-                        <div class="card-footer">
-                            {{ $post->admin ? $post->admin->name : $post->user->name }} · {{ $post->created_at->format('d.m.Y H:i') }}
-                        </div>
-                    </div>
+                <div class="col-sm-12 col-lg-6">
+                    <h2 class="h3"><a href="{{ route('post.show', $post->id) }}">{{ $post->title }}</a></h2>
+                    <p>{{ mb_substr(strip_tags(html_entity_decode($post->description)), 0, 200) }}...</p>
+                    <p>{{ $post->admin ? $post->admin->name : $post->user->name }} · {{ $post->created_at->format('d.m.Y H:i') }}</p>
                 </div>
             @endforeach
         </div>
