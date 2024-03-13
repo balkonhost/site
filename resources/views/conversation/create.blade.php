@@ -1,5 +1,7 @@
 @extends('layout')
 
+@section('title', 'Новый разговор / Разговоры на балконе / Балкон.Хост')
+
 @section('main')
     <div class="container my-5">
         <nav aria-label="breadcrumb">
