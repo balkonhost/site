@@ -25,13 +25,13 @@ Route::group(['prefix' => 'balance'], function () {
     Route::get('', [BalanceController::class, 'index'])->name('home.balance');
 });
 
-Route::group(['prefix' => 'domain'], function () {
+/*Route::group(['prefix' => 'domain'], function () {
     Route::get('', [DomainController::class, 'list'])->name('home.domain');
 });
 
 Route::group(['prefix' => 'hosting'], function () {
     Route::get('', [HostingController::class, 'list'])->name('home.hosting');
-});
+});*/
 
 Route::get('/auth/{user}', function (User $user) {
     if (auth()->user()->getAuthIdentifier() === 0) {
