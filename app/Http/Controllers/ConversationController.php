@@ -3,23 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
-use App\Models\Post;
+use App\Models\Conversation;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
-class PostController extends Controller
+class ConversationController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return Response
      */
-    public function index(Post $post)
+    public function index(Conversation $conversation)
     {
-        $posts = $post->latest()->get();
+        $conversations = $conversation->orderBy('created_at')->get();
 
-        return view('post.index', compact('posts'));
+        return view('conversation.index', compact('conversations'));
     }
 
     /**
@@ -35,7 +35,7 @@ class PostController extends Controller
 
         $admins = Admin::all();
 
-        return view('post.create', compact('admins'));
+        return view('conversation.create', compact('admins'));
     }
 
     /**
@@ -57,11 +57,11 @@ class PostController extends Controller
             'created_at' => 'required|date',
         ]);
 
-        $post = new Post($request->all());
+        $conversation = new Conversation($request->all());
         $user = Auth::user();
-        $user->posts()->save($post);
+        $user->conversations()->save($conversation);
 
-        return redirect()->route('blog.create')
+        return redirect()->route('conversation.create')
             ->with('success','Тема успешно добавлена.');
     }
 
@@ -73,9 +73,11 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        $post = Post::findOrFail($id);
+        $conversation = Conversation::findOrFail($id);
+        $prev = Conversation::where('created_at', '<', $conversation->created_at)->orderByDesc('created_at')->first();
+        $next = Conversation::where('created_at', '>', $conversation->created_at)->orderBy('created_at')->first();
 
-        return view('post.show',compact('post'));
+        return view('conversation.show',compact('conversation', 'next', 'prev'));
     }
 
     /**
@@ -91,9 +93,9 @@ class PostController extends Controller
         }
 
         $admins = Admin::all();
-        $post = Post::findOrFail($id);
+        $conversation = Conversation::findOrFail($id);
 
-        return view('post.edit', compact('admins', 'post'));
+        return view('conversation.edit', compact('admins', 'conversation'));
     }
 
     /**
@@ -110,16 +112,16 @@ class PostController extends Controller
         }
 
         $request->validate([
-            'admin_id' => 'required|integer',
+            'participants' => 'required|array',
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'created_at' => 'required|date',
         ]);
 
-        $post = Post::findOrFail($id);
-        $post->update($request->all());
+        $conversation = Conversation::findOrFail($id);
+        $conversation->update($request->all());
 
-        return redirect()->route('post')
+        return redirect()->route('conversation')
             ->with('success','Тема успешно обнавлена!');
     }
 
@@ -133,7 +135,7 @@ class PostController extends Controller
     {
         $post->delete();
 
-        return redirect()->route('post')
+        return redirect()->route('conversation')
             ->with('success','Тема удалена');
     }
 
@@ -148,7 +150,7 @@ class PostController extends Controller
             abort(404);
         }
 
-        $directory = 'uploads/blog';
+        $directory = 'uploads/post';
 
         if ($request->hasFile('upload')) {
 

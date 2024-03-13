@@ -68,7 +68,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-lg-8">
-                    <h3>Новости и акции</h3>
+                    <h3>Разговоры на балконе</h3>
+                    <div class="post-section">
+                        @foreach($conversations as $conversation)
+                            <h2 class="h3"><a href="{{ route('conversation.show', $conversation->id) }}">{{ $conversation->title }}</a></h2>
+                            <p>{{ mb_substr(strip_tags(html_entity_decode($conversation->description)), 0, 200) }}...</p>
+                            <p>{{ $conversation->admin ? $post->admin->name : $conversation->user->name }} · {{ $conversation->created_at->format('d.m.Y H:i') }}</p>
+                        @endforeach
+                    </div>
                 </div>
                 <div class="col-md-12 col-lg-4">
                     <h3>Запретили твитить на балконе</h3>

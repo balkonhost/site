@@ -211,8 +211,8 @@
                                 @if (Route::has('info'))
                                     <li class="{{ Route::is('info*') ? 'active' : '' }}"><a href="{{ route('info') }}">О проекте</a></li>
                                 @endif
-                                @if (Route::has('post'))
-                                    <li class="{{ Route::is('post*') ? 'active' : '' }}"><a href="{{ route('post') }}">Разговоры на балконе</a></li>
+                                @if (Route::has('conversation'))
+                                    <li class="{{ Route::is('conversation*') ? 'active' : '' }}"><a href="{{ route('conversation') }}">Разговоры на балконе</a></li>
                                 @endif
                                 <!--li><a href="">О лицензировании</a></li-->
                             </ul>

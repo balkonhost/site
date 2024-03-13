@@ -1,11 +1,12 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DomainController;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\ConversationController;
+use App\Http\Controllers\FrontController;
 use App\Services\RegRu\DomainService;
 use App\Models\Admin;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,21 +20,19 @@ use App\Models\Admin;
 */
 
 // Главная
-Route::get('/', function () {
-    return view('index');
-})->name('index');
+Route::get('/', [FrontController::class, 'index'])->name('index');
 
 // Разговоры на балконе
-Route::resource('razgovory', PostController::class)->names([
-    'index' => 'post',
-    'create' => 'post.create',
-    'store' => 'post.store',
-    'edit' => 'post.edit',
-    'update' => 'post.update',
-    'show' => 'post.show',
-    'destroy' => 'post.destroy'
+Route::resource('razgovory', ConversationController::class)->names([
+    'index' => 'conversation',
+    'create' => 'conversation.create',
+    'store' => 'conversation.store',
+    'edit' => 'conversation.edit',
+    'update' => 'conversation.update',
+    'show' => 'conversation.show',
+    'destroy' => 'conversation.destroy'
 ]);
-Route::post('uploads', [PostController::class, 'uploadImage'])->name('posts.upload');
+Route::post('upload', [ConversationController::class, 'uploadImage'])->name('post.upload');
 
 /*Route::group(['prefix' => 'domain'], function () {
     Route::get('', [DomainController::class, 'index'])

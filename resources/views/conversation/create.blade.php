@@ -31,7 +31,7 @@
             @endif
 
             <div class="col-md-10 col-lg-8 col-xl-7">
-                <form action="{{ route('blog.store') }}" method="POST">
+                <form action="{{ route('post.store') }}" method="POST">
                     @csrf
                     <div class="form-floating">
                         <input class="form-control @error('created_at') is-invalid @enderror" name="created_at" type="text" placeholder="Y-m-d H:i:s" required>

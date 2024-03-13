@@ -15,11 +15,11 @@
         <h1 class="mb-5">Разговоры на балконе</h1>
 
         <div class="row">
-            @foreach($posts as $post)
+            @foreach($conversations as $conversation)
                 <div class="col-sm-12 col-lg-6">
-                    <h2 class="h3"><a href="{{ route('post.show', $post->id) }}">{{ $post->title }}</a></h2>
-                    <p>{{ mb_substr(strip_tags(html_entity_decode($post->description)), 0, 200) }}...</p>
-                    <p>{{ $post->admin ? $post->admin->name : $post->user->name }} · {{ $post->created_at->format('d.m.Y H:i') }}</p>
+                    <h2 class="h3"><span class="text-black-50 small">§{{ $conversation->id }}</span> <a href="{{ route('conversation.show', $conversation->id) }}">{{ $conversation->title }}</a></h2>
+                    <p>{{ $conversation->created_at->format('d.m.Y H:i') }}</p>
+                    <p>{{ mb_substr(strip_tags(html_entity_decode($conversation->description)), 0, 200) }}...</p>
                 </div>
             @endforeach
         </div>

@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Conversation extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'admin_id',
+        'participants',
         'title',
         'description',
         'created_at',
@@ -22,9 +22,20 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function admin()
+    public function participants()
     {
-        return $this->belongsTo(Admin::class);
+        return Admin::whereIn('id', $this->participants);
+    }
+
+    public function setParticipantsAttribute($value)
+    {
+        $this->attributes['participants'] = json_encode($value);
+    }
+
+    public function getParticipantsAttribute($value)
+    {
+        return json_decode($value);
+        //return $this->attributes['participants'] = json_decode($value);
     }
 
     // new laravel 9
