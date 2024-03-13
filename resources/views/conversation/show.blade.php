@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', '{$conversation->title} / Разговоры на балконе / Балкон.Хост')
+@section('title', "{$conversation->title} / Разговоры на балконе / Балкон.Хост")
 
 @section('main')
     <div class="container my-5">
@@ -34,10 +34,10 @@
                     @foreach($conversation->participants()->get() as $participant)
                         <div class="mb-3">
                             <div class="row g-0">
-                                <div class="col-md-3">
+                                <div class="col-3">
                                     <img src="{{ $participant->photo }}" class="img-fluid" alt="{{ $participant->name }}">
                                 </div>
-                                <div class="col-md-9">
+                                <div class="col-9">
                                     <div class="ms-3">
                                         <h6 class="card-title">{{ $participant->name }}</h6>
                                         <p class="card-text d-none">{{ $participant->name }} · {{ $participant->position }}</p>
