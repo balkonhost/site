@@ -1,4 +1,4 @@
-@extends('main')
+@extends('layout')
 
 @section('main')
     <div class="container my-5">

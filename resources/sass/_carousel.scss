@@ -1,0 +1,10 @@
+@import "bootstrap/scss/_carousel";
+
+.slider {
+    .carousel-item {
+        height: 250px;
+        &_warranty {
+            background-color: #00ccff;
+        }
+    }
+}

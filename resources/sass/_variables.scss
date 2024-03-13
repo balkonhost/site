@@ -1,17 +1,24 @@
-// Colors
-$blue_dark: #000066;
-$blue_sky: #00ccff;
-$coal: #354052;
+@import "bootstrap/scss/_variables";
 
+// Основыне цвета проекта
+$blue: #000066;
+$heavenly: #00ccff;
+
+// Тестовые цвета
+$coal: #354052;
 $grey_twilight: #333;
 $red_boston_university: #c00;
 
+// Переопределение цветов
+$body-color: $coal; // #333
+
+// Шрифт
 $font-family-sans-serif: 'Fira Sans', sans-serif;
 
+// Заголовки
 $headings-margin-bottom: 1.2rem;
 
+// Навигация
 $navbar-brand-font-size: 1.2rem;
-$navbar-dark-color: #ffffff;
-$navbar-dark-active-color: #ffffff;
-
-$body-color: $coal; // #333
+$navbar-dark-color: $white;
+$navbar-dark-active-color: $white;

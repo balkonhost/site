@@ -1,37 +1,39 @@
-@extends('main')
+@extends('layout')
 
 @section('slider')
-    <div id="slider" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#slider" data-slide-to="0" class="active"></li>
-            <li data-target="#slider" data-slide-to="1"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active" style="background-color: #00ccff;">
-                <div class="container">
-                    <div class="carousel-caption text-left">
-                        <h1 class="carousel-title">Мы гарантируем,<br> что кошмарнее хостинга<br> вы еще не видели.</h1>
-                        <p></p>
+    <div class="slider">
+        <div id="slider" class="carousel slide">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#slider" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#slider" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item carousel-item_warranty active">
+                    <div class="container">
+                        <div class="carousel-caption text-left">
+                            <h1 class="carousel-title">Мы гарантируем,<br> что кошмарнее хостинга<br> вы еще не видели.</h1>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item" style="background-color: #c00;">
+                    <div class="container">
+                        <div class="carousel-caption text-left" style="background-image: url('/img/rkn.png'); background-position: right center; background-repeat: no-repeat; background-size: 185px">
+                            <h1 class="carousel-title">Наши IP-адреса в топе Роскомнадзора,<br> поэтому нет причин переживать,<br> клиенты вас не заметят.</h1>
+                            <p></p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="carousel-item" style="background-color: #c00;">
-                <div class="container">
-                    <div class="carousel-caption text-left" style="background-image: url('/img/rkn.png'); background-position: right center; background-repeat: no-repeat; background-size: 185px">
-                        <h1 class="carousel-title">Наши IP-адреса в топе Роскомнадзора,<br> поэтому нет причин переживать,<br> клиенты вас не заметят.</h1>
-                        <p></p>
-                    </div>
-                </div>
-            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#slider" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#slider" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
-        <a class="carousel-control-prev" href="#slider" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#slider" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </a>
     </div>
 @endsection
 
@@ -66,10 +68,17 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-lg-8">
-                    <h3>Новости и акции</h3>
+                    <h3>Разговоры на балконе</h3>
+                    <div class="post-section">
+                        @foreach($conversations as $conversation)
+                            <h2 class="h3"><a href="{{ route('conversation.show', $conversation->id) }}">{{ $conversation->title }}</a></h2>
+                            <p>{{ mb_substr(strip_tags(html_entity_decode($conversation->description)), 0, 200) }}...</p>
+                            <p>{{ $conversation->admin ? $post->admin->name : $conversation->user->name }} · {{ $conversation->created_at->format('d.m.Y H:i') }}</p>
+                        @endforeach
+                    </div>
                 </div>
                 <div class="col-md-12 col-lg-4">
-                    <h3>Твитим на балконе</h3>
+                    <h3>Запретили твитить на балконе</h3>
                     <div class="twitter-section">
                         <a class="twitter-timeline" data-lang="ru" data-height="600" data-theme="light" href="https://twitter.com/balkonhost?ref_src=twsrc%5Etfw">Tweets by balkonhost</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                     </div>

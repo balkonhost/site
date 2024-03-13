@@ -2,14 +2,18 @@
 
 namespace App\Models;
 
+use Bavix\Wallet\Interfaces\Wallet;
+use Bavix\Wallet\Traits\HasWallet;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements Wallet
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HasWallet;
 
     /**
      * The attributes that are mass assignable.
@@ -41,4 +45,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function posts(): HasMany
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    public function domains(): BelongsToMany
+    {
+        return $this->belongsToMany(Domain::class, 'user_domain');
+    }
+
+    public function hostings(): BelongsToMany
+    {
+        return $this->belongsToMany(Hosting::class, 'user_hosting');
+    }
 }
