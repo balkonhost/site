@@ -71,9 +71,11 @@
                     <h3>Разговоры на балконе</h3>
                     <div class="post-section">
                         @foreach($conversations as $conversation)
-                            <h2 class="h3"><a href="{{ route('conversation.show', $conversation->id) }}">{{ $conversation->title }}</a></h2>
-                            <p>{{ mb_substr(strip_tags(html_entity_decode($conversation->description)), 0, 200) }}...</p>
-                            <p>{{ $conversation->admin ? $post->admin->name : $conversation->user->name }} · {{ $conversation->created_at->format('d.m.Y H:i') }}</p>
+                            <div class="col-sm-12 col-lg-6">
+                                <h2 class="h3"><span class="text-black-50 small">§{{ $conversation->id }}</span> <a href="{{ route('conversation.show', $conversation->id) }}">{{ $conversation->title }}</a></h2>
+                                <p>{{ $conversation->created_at->format('d.m.Y H:i') }}</p>
+                                <p>{{ mb_substr(strip_tags(html_entity_decode($conversation->description)), 0, 200) }}...</p>
+                            </div>
                         @endforeach
                     </div>
                 </div>

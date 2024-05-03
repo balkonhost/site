@@ -1,5 +1,7 @@
 @extends('layout')
 
+@section('title', 'Редактирование / Разговоры на балконе / Балкон.Хост')
+
 @section('main')
     <div class="container my-5">
         <nav aria-label="breadcrumb">
@@ -62,7 +64,7 @@
                         <input class="form-control @error('title') is-invalid @enderror" name="title" value="{{ $conversation->title }}" type="text" placeholder="Тема" required>
                         <label for="title">Тема</label>
                         @error('title')
-                        <span class="invalid-feedback" role="alert">
+                            <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
@@ -70,9 +72,9 @@
                     <br>
                     <div class="form-floating">
                         <textarea class="form-control ckeditor @error('description') is-invalid @enderror" id="description" name="description" placeholder="Подробности" style="height: 12rem" required>{{ $conversation->description }}</textarea>
-                        <label for="message">Подробности</label>
+                        <label for="description">Подробности</label>
                         @error('description')
-                        <span class="invalid-feedback" role="alert">
+                            <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
@@ -89,8 +91,12 @@
     <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
     <script>
         CKEDITOR.replace('description', {
+            allowedContent: true,
+            mediaEmbed: {
+                previewsInData: true
+            },
             filebrowserUploadUrl: "{{ route('post.upload', ['_token' => csrf_token()]) }}",
-            filebrowserUploadMethod: 'form'
+            filebrowserUploadMethod: 'form',
         })
     </script>
 @endsection

@@ -34,6 +34,30 @@ Route::resource('razgovory', ConversationController::class)->names([
 ]);
 Route::post('upload', [ConversationController::class, 'uploadImage'])->name('post.upload');
 
+Route::get('info', function () {
+    return view('info/index');
+})->name('info');
+
+Route::get('info/odmin', function (Admin $admin) {
+    return view('info/team',  ['admins' => $admin->all()]);
+})->name('info.team');
+
+Route::get('/info/data-centr', function () {
+    return view('info/data-center');
+})->name('info.data-center');
+
+Route::get('/info/istoriya', function () {
+    return view('info/timeline');
+})->name('info.timeline');
+
+Route::get('/info/konkurenty', function () {
+    return view('info/competitors');
+})->name('info.competitors');
+
+Route::get('/info/partnery', function () {
+    return view('info/partners');
+})->name('info.partners');
+
 /*Route::group(['prefix' => 'domain'], function () {
     Route::get('', [DomainController::class, 'index'])
         ->name('domain');
@@ -63,18 +87,6 @@ Route::post('upload', [ConversationController::class, 'uploadImage'])->name('pos
 /*Route::get('/support', function () {
     return view('support');
 })->name('support');*/
-
-Route::get('info', function () {
-    return view('info');
-})->name('info');
-
-Route::get('info/team', function (Admin $admin) {
-    return view('team',  ['admins' => $admin->all()]);
-})->name('team');
-
-/*Route::get('/info/data-center', function () {
-    return view('data-center');
-})->name('data-center');*/
 
 /*Route::group(['prefix' => 'cart'], function () {
     Route::get('', [CartController::class, 'list'])->name('cart');

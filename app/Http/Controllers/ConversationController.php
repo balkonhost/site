@@ -51,7 +51,7 @@ class ConversationController extends Controller
         }
 
         $request->validate([
-            'admin_id' => 'required|integer',
+            'participants' => 'required|array',
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'created_at' => 'required|date',
