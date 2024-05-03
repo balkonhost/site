@@ -46,6 +46,18 @@ Route::get('/info/data-centr', function () {
     return view('info/data-center');
 })->name('info.data-center');
 
+Route::get('/info/istoriya', function () {
+    return view('info/timeline');
+})->name('info.timeline');
+
+Route::get('/info/konkurenty', function () {
+    return view('info/competitors');
+})->name('info.competitors');
+
+Route::get('/info/partnery', function () {
+    return view('info/partners');
+})->name('info.partners');
+
 /*Route::group(['prefix' => 'domain'], function () {
     Route::get('', [DomainController::class, 'index'])
         ->name('domain');

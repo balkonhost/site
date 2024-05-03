@@ -20,8 +20,11 @@
                 <div class="side mb-5">
                     <div class="list-group">
                         <a href="{{ route('info') }}" class="list-group-item list-group-item-action">О проекте</a>
+                        <a href="{{ route('info.timeline') }}" class="list-group-item list-group-item-action">История</a>
                         <a href="{{ route('info.team') }}" class="list-group-item list-group-item-action">Наша команда</a>
                         <a href="{{ route('info.data-center') }}" class="list-group-item list-group-item-action active" aria-current="true">Дата-центр</a>
+                        <a href="{{ route('info.partners') }}" class="list-group-item list-group-item-action">Партнеры</a>
+                        <a href="{{ route('info.competitors') }}" class="list-group-item list-group-item-action">Конкуренты</a>
                     </div>
                 </div>
             </div>
