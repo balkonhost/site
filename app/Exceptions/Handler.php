@@ -2,7 +2,9 @@
 
 namespace App\Exceptions;
 
+use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Telegram;
 
 class Handler extends ExceptionHandler
 {
@@ -32,6 +34,19 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        //
+        $this->reportable(function (Exception $e) {
+            $bot = Telegram::bot('balkosha_bot');
+
+            $lines = [
+                '*Балкошечки мои! Опять ошибка на сайте.*',
+                $e->getMessage()
+            ];
+
+            $bot->sendMessage([
+                'chat_id' => env('TELEGRAM_GROUP_ID'),
+                'text' => join("\r\n", $lines),
+                'parse_mode' => 'Markdown'
+            ]);
+        });
     }
 }
