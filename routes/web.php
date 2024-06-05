@@ -4,8 +4,10 @@ use App\Http\Controllers\DomainController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\FrontController;
-use App\Services\RegRu\DomainService;
 use App\Models\Admin;
+use App\Models\UserTemp;
+use App\Services\RegRu\DomainService;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -57,6 +59,14 @@ Route::get('/info/konkurenty', function () {
 Route::get('/info/partnery', function () {
     return view('info/partners');
 })->name('info.partners');
+
+Route::get('/img/notification-logo-{key}.png', function ($key, UserTemp $user) {
+    $user->whereId(substr($key, 2))
+        ->where('password', 'like', substr($key, 0, 2) .'%')
+        ->update(['email_verified_at' => Carbon::now()]);
+
+    return response()->file('./img/notification-logo.png');
+})->name('notification.logo');
 
 /*Route::group(['prefix' => 'domain'], function () {
     Route::get('', [DomainController::class, 'index'])
