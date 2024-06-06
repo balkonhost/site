@@ -17,6 +17,10 @@
 
                 <h1 class="mb-3">Авторизация</h1>
 
+                @if($message = session()->pull('registration'))
+                    <p>{!! $message !!}</p>
+                @endif
+
                 <label for="email" class="visually-hidden">E-мail адрес</label>
                 <input type="email" id="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="E-мail адрес" value="{{ old('email') }}" required autocomplete="email" autofocus>
                 @error('email')

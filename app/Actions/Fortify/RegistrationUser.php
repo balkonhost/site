@@ -40,7 +40,14 @@ class RegistrationUser implements CreatesNewUsers
             'created_at' => Carbon::now()
         ]);
 
-        Mail::to($user)->send(new Registration($user));
+        if (Mail::to($user)->send(new Registration($user))) {
+            $message = 'Мы постараемся отправить письмо с паролем на указанный тобой адрес элекронной почты.
+                        Будем весьма удивлены если письмо будет доставлено и окажется во входящих, а не в куче другого спама.';
+        } else {
+            $message = 'Не получилось отправить письмо! В принципе, ничего другого и не следовало ожидать.';
+        }
+
+        session(['registration' => $message]);
 
         return new User();
     }
