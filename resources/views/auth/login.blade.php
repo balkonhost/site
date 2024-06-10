@@ -21,6 +21,12 @@
                     <p>{!! $message !!}</p>
                 @endif
 
+                @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
+
                 <label for="email" class="visually-hidden">E-мail адрес</label>
                 <input type="email" id="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="E-мail адрес" value="{{ old('email') }}" required autocomplete="email" autofocus>
                 @error('email')
