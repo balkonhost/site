@@ -33,7 +33,7 @@
                         @endif
 
                         @if ($errors->any())
-                            <div class="login-error">Куда это ты намылиться? Как шифроваться даже не знаешь! Ты точно свой?</div>
+                            <div class="login-error">Куда это ты намылиться, ты точно «свой»?</div>
                         @endif
 
                         <div class="mb-3">
