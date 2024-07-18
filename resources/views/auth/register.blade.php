@@ -5,21 +5,21 @@
 
 @section('main')
     <div class="container">
-        <h1 class="my-5 text-center">Я с другого района</h1>
+        <h1 class="my-5 text-center">С другого района</h1>
 
         <div class="card-group mb-5">
             <div class="card border-end-0">
                 <div class="card-body p-5">
-                    <h5 class="card-title mb-3">Вроде бы я свой.</h5>
+                    <h5 class="card-title mb-3">Я вроде бы свой.</h5>
                     <p class="card-text">Тогда кажись ты попал не на свой этаж.</p>
                     <a href="{{ route('login') }}" class="btn btn-primary mb-4" title="Вход для клиентов">Намылиться</a>
-                    <p class="card-text"><small class="text-muted">Плюшки и звездюли для своих у нас этажом ниже. Хотя, на наш взгляд, плюшки эти — хрень полная, а вот звездюли вроде ничего.</small></p>
+                    <p class="card-text"><small class="text-muted">Плюшки и звездюли для «своих» у нас этажом ниже. Хотя, на наш взгляд, плюшки эти — хрень полная, а вот звездюли вроде ничего.</small></p>
 
                 </div>
             </div>
             <div class="card border-start border-4">
                 <div class="card-body p-5">
-                    <h5 class="card-title mb-3">Ну чё, идём пришиваться или будем чушпанами?</h5>
+                    <h5 class="card-title mb-3">Ну чё, будешь пришиваться?</h5>
 
                     <form method="POST" action="{{ route('register') }}" class="needs-validation">
                         @csrf
@@ -34,7 +34,7 @@
 
                         <div class="mb-3">
                             <label for="email" class="form-label">Как тебя найти?</label>
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" aria-describedby="email-help" placeholder="Введи email" required autocomplete="email">
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" aria-describedby="email-help" placeholder="Какое мыло?" required autocomplete="email">
                             @error('email')
                             <small id="email-help" class="form-text invalid-feedback" role="alert">{{ $message }}</small>
                             @else
@@ -46,7 +46,7 @@
                             <div class="form-check @error('offer') is-invalid @enderror">
                                 <input class="form-check-input @error('offer') is-invalid @enderror" type="checkbox" name="offer" id="offer" {{ old('offer') ? 'checked' : '' }}>
                                 <label for="offer">
-                                    Не в курсе какие у вас тут <a href='' target='_blank'>правила</a>, но я на все согласен!
+                                    Я не в кусре ваших <a href='' target='_blank'>правил</a>, но заранее на все согласен!
                                 </label>
                             </div>
                             @error('offer')

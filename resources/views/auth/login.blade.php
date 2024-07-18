@@ -38,7 +38,7 @@
 
                         <div class="mb-3">
                             <label for="email" class="form-label">Мыло</label>
-                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" aria-describedby="email-help" placeholder="Введи email" required autocomplete="email" autofocus>
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" aria-describedby="email-help" placeholder="Какое мыло?" required autocomplete="email" autofocus>
                             @error('email')
                             <small id="email-help" class="form-text invalid-feedback" role="alert">{{ $message }}</small>
                             @enderror
@@ -46,7 +46,7 @@
 
                         <div class="mb-3">
                             <label for="password" class="form-label">Шифр</label>
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Введи пароль" required autocomplete="current-password">
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Пароль помнишь?" required autocomplete="current-password">
                             @error('password')
                             <small id="email-help" class="form-text invalid-feedback" role="alert">{{ $message }}</small>
                             @enderror
@@ -73,7 +73,7 @@
                     <h5 class="card-title mb-3">Если с другого района — придется пришиваться.</h5>
                     <p class="card-text">Если ты впервые у нас и решил «забалконится», то придется поведать как тебя кличут и как можно до тебя достучаться.</p>
                     <a href="{{ route('register') }}" class="btn btn-primary mb-4">Хочу пришиться</a>
-                    <p class="card-text"><small class="text-muted">Для своих у нас вроде есть какие-то плюшки и звездюли. Хотя, на наш взгляд, плюшки эти — хрень полная, а вот звездюли вроде ничего.</small></p>
+                    <p class="card-text"><small class="text-muted">Для «своих» у нас вроде есть какие-то плюшки и звездюли. Хотя, на наш взгляд, плюшки эти — хрень полная, а вот звездюли вроде ничего.</small></p>
                 </div>
             </div>
         </div>
