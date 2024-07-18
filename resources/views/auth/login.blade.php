@@ -16,7 +16,7 @@
 
                         @if ($errors->any() || $message = session()->pull('error'))
                             <div class="login-error">{!! $message ?? 'Куда это ты намылиться, ты точно «свой»?' !!}</div>
-                        @elseif($message = session()->pull('success'))
+                        @elseif($message = session()->pull('status'))
                             <div class="login-success">{!! $message !!}</div>
                         @endif
 
@@ -30,9 +30,9 @@
 
                         <div class="mb-3">
                             <label for="password" class="form-label">Шифр</label>
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Пароль помнишь?" required autocomplete="current-password">
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" aria-describedby="password-help" placeholder="Пароль помнишь?" required autocomplete="current-password">
                             @error('password')
-                            <small id="email-help" class="form-text invalid-feedback" role="alert">{{ $message }}</small>
+                            <small id="password-help" class="form-text invalid-feedback" role="alert">{{ $message }}</small>
                             @enderror
                         </div>
 

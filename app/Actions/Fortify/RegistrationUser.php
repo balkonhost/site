@@ -47,7 +47,7 @@ class RegistrationUser implements CreatesNewUsers
             $message = 'Постараемся отправить явки и пароли на указанное мыло.
                         Будем удивлены если письмо будет доставлено и окажется во входящих, а не в куче другого спама.';
 
-            session(['success' => $message]);
+            session(['status' => $message]);
         } else {
             $message = 'Не получилось отправить письмо! Ничего другого и не следовало ожидать.';
 

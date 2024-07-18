@@ -164,8 +164,8 @@ return [
         'email'                 => 'Мыло', //'E-Mail адрес',
         'first_name'            => 'Имя',
         'last_name'             => 'Фамилия',
-        'password'              => 'Пароль',
-        'password_confirmation' => 'Подтверждение пароля',
+        'password'              => 'Шифр', // 'Пароль'
+        'password_confirmation' => 'Подтверждение шифра', // 'Подтверждение пароля'
         'city'                  => 'Город',
         'country'               => 'Страна',
         'address'               => 'Адрес',

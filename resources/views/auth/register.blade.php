@@ -28,7 +28,7 @@
                             <label for="name" class="form-label">Как тебя кличут?</label>
                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" aria-describedby="name-help" placeholder="Звать то как?" required autocomplete="name" autofocus>
                             @error('name')
-                            <small id="email-help" class="form-text invalid-feedback" role="alert">{{ $message }}</small>
+                            <small id="name-help" class="form-text invalid-feedback" role="alert">{{ $message }}</small>
                             @enderror
                         </div>
 
@@ -50,7 +50,7 @@
                                 </label>
                             </div>
                             @error('offer')
-                            <small class="invalid-feedback" role="alert">{{ $message }}</small>
+                            <small id="offer-help" class="form-text invalid-feedback" role="alert">{{ $message }}</small>
                             @enderror
                         </div>
 

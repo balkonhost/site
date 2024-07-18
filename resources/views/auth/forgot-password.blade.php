@@ -1,47 +1,53 @@
 @extends('layout')
 
-@section('body')
-    <body class="body-auth text-center vh-100">
-    <main class="form-signin">
-        <form method="POST" action="{{ route('password.request') }}">
-            @csrf
+@section('title', 'Восстановление / Балкон.Хост')
+@section('description', 'Восстановление пароля.')
 
-            <a href="{{ route('index') }}" class="d-block mb-4">
-                <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51 51" height="57" width="57" version="1.1">
-                    <g>
-                        <path d="m 37,0 14.2087,0 0,50.9653 -14.2087,0 0,-4.2521 8.9707,0 0,-42.4608 -8.9707,0 0,-4.2524 z m -7.1725,18.3309 3.9311,0 0,14.3057 -3.9311,0 0,-1.1938 2.046,0 0,-11.9184 -2.046,0 0,-1.1935 z m 3.8465,-7.7636 8.1974,0 0,29.8333 -8.1974,0 0,-2.4896 4.5349,0 0,-24.8548 -4.5349,0 0,-2.4889 z"></path>
-                        <path d="m 14,0 -14.2087,0 0,50.9653 14.2087,0 0,-4.2521 -8.9708,0 0,-42.4608 8.9708,0 0,-4.2524 z m 7.1725,18.3309 -3.9311,0 0,14.3057 3.9311,0 0,-1.1938 -2.046,0 0,-11.9184 2.046,0 0,-1.1935 z m -3.8465,-7.7636 -8.1981,0 0,29.8333 8.1981,0 0,-2.4896 -4.535,0 0,-24.8548 4.535,0 0,-2.4889 z"></path>
-                    </g>
-                </svg>
-            </a>
+@section('main')
+    <div class="container">
+        <h1 class="my-5 text-center">Помогите, пацаны!</h1>
 
-            <h1 class="mb-3">Восстановление</h1>
+        <div class="card-group mb-5">
+            <div class="card border-4">
+                <div class="card-body p-5">
+                    <h5 class="card-title mb-3">Походу я забыл все явки и пароли.</h5>
 
-            @if (session('status'))
-                <div class="mb-4 font-medium text-sm text-green-600">
-                    {{ session('status') }}
+                    <form method="POST" action="{{ route('password.request') }}" class="needs-validation">
+                        @csrf
+
+                        @if ($errors->any() || $message = session()->pull('error'))
+                            <div class="login-error">{!! $message ?? 'А ты точно «свой»?' !!}</div>
+                        @elseif($message = session()->pull('status'))
+                            <div class="login-success">{!! $message !!}</div>
+                        @endif
+
+                        <div class="mb-4">
+                            <label for="email" class="form-label">Но мыло помню</label>
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" aria-describedby="email-help" placeholder="Какое мыло?" required autocomplete="email" autofocus>
+                            @error('email')
+                            <small id="email-help" class="form-text invalid-feedback" role="alert">{{ $message }}</small>
+                            @enderror
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Помогите</button>
+                        @if (Route::has('login'))
+                            <a class="btn btn-link float-end" href="{{ route('login') }}">Хотя не, я сам справлюсь</a>
+                        @endif
+                    </form>
                 </div>
-            @endif
+            </div>
+            <div class="card">
+                <div class="card-body p-5">
+                    <h5 class="card-title mb-3">Мне упала какая-то малява.</h5>
+                    <p class="card-text">Ничего не понял, но на мыло пришла какая-то хрень.</p>
+                    <a href="{{ route('password.reset', 'token') }}" class="btn btn-primary mb-4">Что делать?</a>
+                    <p class="card-text"><small class="text-muted"></small></p>
+                </div>
+            </div>
+        </div>
 
-            <label for="email" class="visually-hidden">E-мail адрес</label>
-            <input type="email" id="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="E-мail адрес" value="{{ old('email') }}" required autocomplete="email" autofocus>
-            @error('email')
-            <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
-            @enderror
-
-            <label for="cats" class="visually-hidden">Вы любите кошек?</label>
-            <input type="text" id="cats" class="form-control @error('cats') is-invalid @enderror" name="cats" placeholder="Вы любите кошек?" required autocomplete="current-password">
-            @error('cats')
-            <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
-            @enderror
-
-            <button class="btn btn-lg btn-primary" type="submit">Восстановить</button>
-            @if (Route::has('login'))
-                <a class="btn btn-link" href="{{ route('login') }}">Вспомнили ваш пароль?</a>
-            @endif
-
-            <p class="mt-3 mb-3 text-muted"><a href="{{ route('register') }}">Еще не зарегистрированы?</a></p>
-        </form>
-    </main>
-    </body>
+        <div class="text-center mb-5">
+            <a class="text-muted" href="{{ route('register') }}">Я с другого района</a>
+        </div>
+    </div>
 @endsection
