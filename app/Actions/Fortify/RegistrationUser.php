@@ -33,21 +33,21 @@ class RegistrationUser implements CreatesNewUsers
             ],
         ])->validate();
 
-        $user = UserTemp::firstOrCreate(['email' => $input['email']], [
+        /*$user = UserTemp::firstOrCreate(['email' => $input['email']], [
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Str::random(8),
             'created_at' => Carbon::now()
-        ]);
+        ]);*/
 
-        if (Mail::to($user)->send(new Registration($user))) {
+        //if (Mail::to($user)->send(new Registration($user))) {
             $message = 'Мы постараемся отправить письмо с паролем на указанный тобой адрес элекронной почты.
                         Будем весьма удивлены если письмо будет доставлено и окажется во входящих, а не в куче другого спама.';
-        } else {
+        //} else {
             $message = 'Не получилось отправить письмо! В принципе, ничего другого и не следовало ожидать.';
-        }
+        //}
 
-        session(['registration' => $message]);
+        session(['error' => $message]);
 
         return new User();
     }
