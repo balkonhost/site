@@ -31,23 +31,28 @@ class RegistrationUser implements CreatesNewUsers
                 'max:255',
                 Rule::unique(User::class),
             ],
+            'offer' => ['required'],
+        ], [
+            'offer.required' => 'A чё это ты так неуважительно к людям относишься, не соглашаешься?',
         ])->validate();
 
-        /*$user = UserTemp::firstOrCreate(['email' => $input['email']], [
+        $user = UserTemp::firstOrCreate(['email' => $input['email']], [
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Str::random(8),
             'created_at' => Carbon::now()
-        ]);*/
+        ]);
 
-        //if (Mail::to($user)->send(new Registration($user))) {
-            $message = 'Мы постараемся отправить письмо с паролем на указанный тобой адрес элекронной почты.
-                        Будем весьма удивлены если письмо будет доставлено и окажется во входящих, а не в куче другого спама.';
-        //} else {
-            $message = 'Не получилось отправить письмо! В принципе, ничего другого и не следовало ожидать.';
-        //}
+        if (Mail::to($user)->send(new Registration($user))) {
+            $message = 'Постараемся отправить явки и пароли на указанное мыло.
+                        Будем удивлены если письмо будет доставлено и окажется во входящих, а не в куче другого спама.';
 
-        session(['error' => $message]);
+            session(['success' => $message]);
+        } else {
+            $message = 'Не получилось отправить письмо! Ничего другого и не следовало ожидать.';
+
+            session(['error' => $message]);
+        }
 
         return new User();
     }

@@ -14,26 +14,10 @@
                     <form method="POST" action="{{ route('login') }}" class="needs-validation">
                         @csrf
 
-                        @if($message = session()->pull('registration'))
-                            <!--p>{!! $message !!}</p-->
-                        @endif
-
-                        @if (session('status'))
-                            <!--div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                            </div-->
-                        @endif
-
-                        @if (session('success'))
-                            <div class="register-success">{{ session('success') }}</div>
-                        @endif
-
-                        @if (session('socialite'))
-                            <div class="login-error">{{ session('socialite') }}</div>
-                        @endif
-
-                        @if ($errors->any())
-                            <div class="login-error">Куда это ты намылиться, ты точно «свой»?</div>
+                        @if ($errors->any() || $message = session()->pull('error'))
+                            <div class="login-error">{!! $message ?? 'Куда это ты намылиться, ты точно «свой»?' !!}</div>
+                        @elseif($message = session()->pull('success'))
+                            <div class="login-success">{!! $message !!}</div>
                         @endif
 
                         <div class="mb-3">
