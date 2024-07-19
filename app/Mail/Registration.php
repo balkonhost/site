@@ -32,7 +32,7 @@ class Registration extends Mailable
     public function build()
     {
         //return $this->view('view.name');
-        return $this->markdown('emails.registration')
+        return $this->markdown('emails.auth.registration')
             ->subject("Регистрация на сайте ". config('app.name'))
             ->from(config('mail.from.address'), config('app.name'));
     }
