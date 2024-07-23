@@ -12,7 +12,7 @@
                 <div class="card-body p-5">
                     <h5 class="card-title mb-3">Походу я забыл все явки и пароли.</h5>
                     <p class="card-text"><small class="text-muted">Я не хочу ничего восстанавливать, никакие явки и пароли мне уже не нужны. Просто отшейте меня и все тут.</small></p>
-                    <a href="javascript:window.close();" class="btn btn-primary mb-4">Сигануть с балкона</a>
+                    <a href="https://blackscreen.app/" class="btn btn-primary mb-4">Сигануть с балкона</a>
                 </div>
             </div>
             <div class="card border-start border-4">
