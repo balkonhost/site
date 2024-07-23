@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Domain extends Model
 {
+    use SoftDeletes;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -35,6 +38,21 @@ class Domain extends Model
      */
     protected $casts = [
         // ...
+    ];
+
+    /**
+     * The attributes that should be cast to datetime.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'deleted_at'
+    ];
+
+    protected $dispatchesEvents = [
+        'created' => 'App\Events\Domain\Created',
+        'updated' => 'App\Events\Domain\Updated',
+        'deleted' => 'App\Events\Domain\Deleted'
     ];
 
     public function provider(): BelongsTo

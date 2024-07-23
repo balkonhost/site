@@ -27,14 +27,14 @@ class Domains extends Command
      *
      * @return mixed
      */
-    public function handle(DomainService $domainService): void
+    public function handle(DomainService $domainService, Provider $provider, Domain $domain): void
     {
         $domains = $domainService->getDomains();
 
-        if ($provider = Provider::find(1)) {
+        if ($provider = $provider->find(1)) {
             // Обновление данных по доменам
-            collect($domains)->each(function ($item) use ($provider) {
-                $domain = Domain::updateOrCreate(['domain' => $item->domain], $item->toArray());
+            collect($domains)->each(function ($item) use ($provider, $domain) {
+                $domain = $domain->updateOrCreate(['domain' => $item->domain], $item->toArray());
                 if ($domain->wasRecentlyCreated === true) {
                     $provider->domains()->attach([$domain->id], ['service_id' => $item->service_id]);
                 }
