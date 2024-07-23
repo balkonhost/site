@@ -161,11 +161,11 @@ return [
     'attributes' => [
         'name'                  => 'Имя',
         'username'              => 'Никнейм',
-        'email'                 => 'E-Mail адрес',
+        'email'                 => 'Мыло', //'E-Mail адрес',
         'first_name'            => 'Имя',
         'last_name'             => 'Фамилия',
-        'password'              => 'Пароль',
-        'password_confirmation' => 'Подтверждение пароля',
+        'password'              => 'Шифр', // 'Пароль'
+        'password_confirmation' => 'Подтверждение шифра', // 'Подтверждение пароля'
         'city'                  => 'Город',
         'country'               => 'Страна',
         'address'               => 'Адрес',
@@ -188,6 +188,6 @@ return [
         'time'                  => 'Время',
         'available'             => 'Доступно',
         'size'                  => 'Размер',
-        'offer'                 => 'условия договора-оферты'
+        'offer'                 => 'наши правила', //'условия договора-оферты'
     ],
 ];

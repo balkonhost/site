@@ -18,7 +18,7 @@
 @import "bootstrap/scss/_containers";
 @import "bootstrap/scss/_grid";
 //@import "bootstrap/scss/tables";
-@import "_forms";
+@import "bootstrap/scss/_forms";
 @import "bootstrap/scss/_buttons";
 @import "bootstrap/scss/_transitions";
 @import "bootstrap/scss/_dropdown";
@@ -52,3 +52,20 @@
 
 @import "_footer";
 //@import "custom";
+
+.login-error {
+    background: #f63a01;
+    color: #ffffff !important;
+    position: relative;
+    padding: 1.5rem 3rem !important;
+    margin: 0 -3rem 1rem;
+    font-size: .875rem;
+}
+.login-success {
+    background: #95c11e;
+    color: #ffffff !important;
+    position: relative;
+    padding: 1.5rem 3rem !important;
+    margin: 0 -3rem 1rem;
+    font-size: .875rem;
+}

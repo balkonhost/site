@@ -6,9 +6,19 @@
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#slider" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#slider" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#slider" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#slider" data-bs-slide-to="3" aria-label="Slide 4"></button>
             </div>
             <div class="carousel-inner">
-                <div class="carousel-item carousel-item_warranty active">
+                <div class="carousel-item active" style="background-color: #c00;">
+                    <div class="container">
+                        <div class="carousel-caption text-left">
+                            <h1 class="carousel-title">Вам надоело, что у вас все стабильно работает, скучаете по бессоным ночам, потерянным архивам? Наш хостинг поможет вам вспомнить все.</h1>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item carousel-item_warranty">
                     <div class="container">
                         <div class="carousel-caption text-left">
                             <h1 class="carousel-title">Мы гарантируем,<br> что кошмарнее хостинга<br> вы еще не видели.</h1>
@@ -20,6 +30,14 @@
                     <div class="container">
                         <div class="carousel-caption text-left" style="background-image: url('/img/rkn.png'); background-position: right center; background-repeat: no-repeat; background-size: 185px">
                             <h1 class="carousel-title">Наши IP-адреса в топе Роскомнадзора,<br> поэтому нет причин переживать,<br> клиенты вас не заметят.</h1>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item carousel-item_warranty">
+                    <div class="container">
+                        <div class="carousel-caption text-left">
+                            <h1 class="carousel-title">Наша поддержка - старшеклассники и студенты, отчисленные после первого курса. Если ответят, то могут и послать</h1>
                             <p></p>
                         </div>
                     </div>
@@ -82,7 +100,9 @@
                 <div class="col-md-12 col-lg-4">
                     <h3>Запретили твитить на балконе</h3>
                     <div class="twitter-section">
-                        <a class="twitter-timeline" data-lang="ru" data-height="600" data-theme="light" href="https://twitter.com/balkonhost?ref_src=twsrc%5Etfw">Tweets by balkonhost</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        <a href="https://twitter.com/balkonhost" title="Tweets by balkonhost">
+                            <img src="/img/twitter-forbidden.jpg" class="img-fluid" alt="Tweets forbidden">
+                        </a>
                     </div>
                 </div>
             </div>

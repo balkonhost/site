@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Notifications\ResetPassword as ResetPasswordNotification;
 use Bavix\Wallet\Interfaces\Wallet;
 use Bavix\Wallet\Traits\HasWallet;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -46,9 +47,9 @@ class User extends Authenticatable implements Wallet
         'email_verified_at' => 'datetime',
     ];
 
-    public function posts(): HasMany
+    public function conversations(): HasMany
     {
-        return $this->hasMany(Post::class);
+        return $this->hasMany(Conversation::class);
     }
 
     public function domains(): BelongsToMany
@@ -59,5 +60,10 @@ class User extends Authenticatable implements Wallet
     public function hostings(): BelongsToMany
     {
         return $this->belongsToMany(Hosting::class, 'user_hosting');
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPasswordNotification($token));
     }
 }
