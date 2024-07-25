@@ -9,7 +9,6 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
-        "balkonhost/reg-api": "^0.0.7",
         "bavix/laravel-wallet": "^10.1",
         "darryldecode/cart": "^4.2",
         "doctrine/dbal": "^3.6",
