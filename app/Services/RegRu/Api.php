@@ -7,9 +7,9 @@ use GuzzleHttp\Client;
 
 class Api
 {
-    protected string $username = '';
+    protected string $username;
 
-    protected string $password = '';
+    protected string $password;
 
     public function __construct()
     {
@@ -25,11 +25,12 @@ class Api
      *
      * @return $this
      */
-    public function account($account = '')
+    public function account($account)
     {
         if (empty($account)) {
             throw new Exception('Account is not specified');
         }
+
         $allAccounts = config('reg_ru.accounts');
 
         if (!isset($allAccounts[$account])) {
@@ -88,14 +89,14 @@ class Api
 
         $json = $client->post($cmd, [
             'form_params' => $params,
-            'timeout' => 60,
-            'connect_timeout' => 60
+            //'timeout' => 60,
+            //'connect_timeout' => 60
         ])
             ->getBody()
             ->getContents();
 
         if (!$data = json_decode($json, true)) {
-            throw new Exception('JSON decodin error');
+            throw new Exception('JSON decoding error');
         }
 
         if (!isset($data['result'])) {
@@ -106,11 +107,6 @@ class Api
             throw new Exception("{$data['error_code']}: {$data['error_text']}");
         }
 
-        if (isset($data['answer'])) {
-            return $data['answer'];
-        }
-
-        return $data['result'];
+        return $data['answer'] ?? $data['result'];
     }
-
 }
