@@ -7,15 +7,13 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 
 /*
- * Функции для работы с услугами
- * //service/nop Проверка доступности списка услуг
+ * Не реализованные функции для работы с услугами
  * //service/get_prices (получение цен на активацию/продление услуг)
  * //service/get_servtype_details (получить цену и общие данные услуги)
  * //service/create (заказ новой услуги)
  * //service/check_create (валидация параметров заказа новой услуги)
  * //service/delete (удаление услуги)
  * //service/get_info (получить информацию об услугах)
- * //service/get_list (получить список активных услуг)
  * //service/get_folders (получение списка папок, в которые входит сервис)
  * //service/get_details (получение общей информации по услуге)
  * //service/get_dedicated_server_list (получение списка выделенных серверов доступных для заказа)
@@ -98,6 +96,15 @@ class Service
      */
     public function send(string $cmd = 'nop', array $params = [], string $format = 'plain')
     {
+        try {
+            return $this->request($cmd, $this->prepare($params), $format);
+        } catch (Exception $exception) {
+            return false;
+        }
+    }
+
+    protected function request(string $cmd = 'nop', array $params = [], string $format = 'plain')
+    {
         $config = config('reg_ru.client');
 
         if (!isset($config)) {
@@ -106,10 +113,10 @@ class Service
 
         $client = new Client($config);
 
-        $params = array_merge($params, [
+        $params = array_merge([
             'username' => $this->username,
             'password' => $this->password
-        ]);
+        ], $params);
 
         if ('json' === $format) {
             $params = [
@@ -139,5 +146,68 @@ class Service
         }
 
         return $data['answer'] ?? $data['result'];
+    }
+
+    protected function camelToSnake($value): string
+    {
+        return ltrim(strtolower(preg_replace('/[A-Z]([A-Z](?![a-z]))*/', '_$0', $value)), '_');
+
+        return preg_replace_callback(
+            '/[A-Z]/',
+            function($matches) {
+                return '_'. strtolower($matches[0]);
+            },
+            $value
+        );
+    }
+
+    protected function prepare(array $data): array
+    {
+        array_walk($data, function ($value, $key) use (&$data) {
+            $key = $this->camelToSnake($key);
+            $data[$key] = $value;
+        });
+
+        return $data;
+    }
+
+    /**
+     * Для тестирования, позволяет проверить доступность списка услуг и получить их id
+     * @function service/nop
+     *
+     * @param array $params Поля запроса:
+     * Стандартные параметры идентификации услуги, параметры идентификации списка услуг
+     */
+    public function nop(array $params = [])
+    {
+        return $this->send('service/nop', $params);
+    }
+
+    /**
+     * service/get_list
+     * Получить список активных услуг
+     *
+     * @param array $params Поля запроса:
+     * servtype - вид услуги
+     *
+     * Возможные варианты:
+     * domain — «Домен»,
+     * srv_webfwd — «Web-форвардинг»,
+     * srv_parking — «Парковка домена»,
+     * srv_dns_both — «Поддержка DNS»,
+     * srv_hosting_ispmgr — «ISPmanager хостинг»,
+     * srv_hosting_cpanel — «CPanel хостинг»,
+     * srv_hosting_plesk — «Plesk хостинг»,
+     * srv_antispam — «Расширенная защита от спама»,
+     * srv_addip — «Дополнительный ip адрес»,
+     * srv_license_isp — «ISPmanager лицензия»,
+     * srv_certificate — «Сертификат на домен»,
+     * srv_voucher — «Свидетельство на домен».
+     *
+     * Если значение не указано, возвращаются услуги всех видов.
+     */
+    public function getList(array $params = [])
+    {
+        return $this->send('service/get_list', $params);
     }
 }
