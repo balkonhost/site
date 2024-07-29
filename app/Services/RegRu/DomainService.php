@@ -73,6 +73,6 @@ class DomainService extends Service
      */
     public function getDomains()
     {
-        return $this->getList(['servtype' => 'domain']);
+        return $this->getList(['servtype' => 'domain'])['services'] ?? false;
     }
 }

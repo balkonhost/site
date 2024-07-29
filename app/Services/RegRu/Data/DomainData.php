@@ -1,5 +1,5 @@
 <?php
-namespace App\Services\RegRu\Data\Domain;
+namespace App\Services\RegRu\Data;
 
 use Spatie\LaravelData\Data;
 
@@ -13,19 +13,15 @@ class DomainData extends Data
         public string $expiration_date
     ) {}
 
-    public static function fromJson(array $json): self|bool
+    public static function prepare(array $data): self|bool
     {
-        if ('domain' === $json['servtype']) {
-            return new self(
-                $json['service_id'],
-                $json['dname'],
-                self::state($json['state']),
-                $json['creation_date'],
-                $json['expiration_date']
-            );
-        }
-
-        return false;
+        return new self(
+            $data['service_id'],
+            $data['dname'],
+            self::state($data['state']),
+            $data['creation_date'],
+            $data['expiration_date']
+        );
     }
 
     protected static function state($state): string

@@ -1,10 +1,11 @@
 <?php
 namespace App\Console\Commands\RegRu;
 
-use Illuminate\Console\Command;
-use App\Services\RegRu\DomainService;
-use App\Models\Provider;
 use App\Models\Domain;
+use App\Models\Provider;
+use App\Services\RegRu\Data\DomainData;
+use App\Services\RegRu\DomainService;
+use Illuminate\Console\Command;
 
 class Domains extends Command
 {
@@ -29,9 +30,8 @@ class Domains extends Command
      */
     public function handle(DomainService $domainService, Provider $provider, Domain $domain): void
     {
-        $domains = $domainService->getDomains();
-
-        if ($provider = $provider->find(1)) {
+        if ($provider = $provider->whereName('REG.RU')->first()) {
+            $domains = array_map(fn (array $domain) => DomainData::prepare($domain), $domainService->getDomains());
             // Обновление данных по доменам
             collect($domains)->each(function ($item) use ($provider, $domain) {
                 $domain = $domain->updateOrCreate(['domain' => $item->domain], $item->toArray());
