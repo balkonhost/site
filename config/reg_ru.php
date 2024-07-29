@@ -10,7 +10,7 @@ return [
 
     'client' => [
         'base_uri' => 'https://api.reg.ru/api/regru2/',
-        'timeout'  => 30.0,
+        'timeout'  => 60.0,
         'verify'   => false,
     ],
 
