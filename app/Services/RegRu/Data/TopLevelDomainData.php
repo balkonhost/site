@@ -23,8 +23,6 @@ class TopLevelDomainData extends Data
     {
         $data = current($payloads);
 
-        print_r($data);
-
         return new self(
             // $data['extcreate_price_eq_renew'],
             $data['domain'],
@@ -39,6 +37,4 @@ class TopLevelDomainData extends Data
             $data['retail_renew_price'],
         );
     }
-
-    //    return array_filter(array_map(fn (array $data) => PriceData::from($data), $data['prices']));
 }
