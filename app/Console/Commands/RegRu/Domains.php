@@ -31,7 +31,8 @@ class Domains extends Command
     public function handle(DomainService $domainService, Provider $provider, Domain $domain): void
     {
         if ($provider = $provider->whereName('REG.RU')->first()) {
-            $domains = array_map(fn (array $domain) => DomainData::prepare($domain), $domainService->getDomains());
+            $domains = array_map(fn (array $domain) => DomainData::from($domain), $domainService->getDomains());
+
             // Обновление данных по доменам
             collect($domains)->each(function ($item) use ($provider, $domain) {
                 $domain = $domain->updateOrCreate(['domain' => $item->domain], $item->toArray());

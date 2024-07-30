@@ -13,8 +13,10 @@ class DomainData extends Data
         public string $expiration_date
     ) {}
 
-    public static function prepare(array $data): self|bool
+    public static function from(mixed ...$payloads): static
     {
+        $data = current($payloads);
+
         return new self(
             $data['service_id'],
             $data['dname'],
