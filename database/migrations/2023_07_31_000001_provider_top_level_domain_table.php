@@ -24,9 +24,6 @@ return new class extends Migration
                 ->cascadeOnDelete()
                 ->comment('Идентификатор домена верхнего уровня');
 
-            $table->decimal('cost_new_price', '12')->comment('Стоимость регистрации');
-            $table->decimal('cost_renew_price', '12')->comment('Стоимость продления регистрации');
-
             $table->decimal('retail_new_price', '12')->comment('Розничная стоимость регистрации');
             $table->decimal('retail_renew_price', '12')->comment('Розничная стоимость продления регистрации');
 
