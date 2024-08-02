@@ -46,6 +46,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+
+    @yield('style')
 </head>
 @section('body')
 <body class="d-flex flex-column h-100">
@@ -96,7 +98,7 @@
                         @guest
                             @if (Route::has('home'))
                                 <li class="nav-item {{ Route::is('home*') ? 'active' : '' }}">
-                                    <a class="nav-link" href="{{ route('home') }}">Личный кабинет</a>
+                                    <a class="nav-link" href="{{ route('login') }}">Личный кабинет</a>
                                 </li>
                             @endif
                         @else
@@ -144,7 +146,7 @@
                             <path fill-rule="evenodd" d="M4 0h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H4z"/>
                             <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v.634l.549-.317a.5.5 0 1 1 .5.866L9 6l.549.317a.5.5 0 1 1-.5.866L8.5 6.866V7.5a.5.5 0 0 1-1 0v-.634l-.549.317a.5.5 0 1 1-.5-.866L7 6l-.549-.317a.5.5 0 0 1 .5-.866l.549.317V4.5A.5.5 0 0 1 8 4zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
                         </svg>
-                        <a href="https://rkn.gov.ru/it/control/p852/" target="_blank" title="Разъяснения Федеральной службы по надзорув сфере связи, информационных технологий и массовых коммуникаций">В соответствиями с разъяснениями Роскомнадзора лицензия на телематические услуги связи для оказания услуг хостинга не требуется.</a>
+                        <a href="https://old.rkn.gov.ru/it/control/p852/" target="_blank" title="Разъяснения Федеральной службы по надзорув сфере связи, информационных технологий и массовых коммуникаций">В соответствиями с разъяснениями Роскомнадзора лицензия на телематические услуги связи для оказания услуг хостинга не требуется.</a>
                     </div>
                     <div class="footer-lic">
                         <div class="float-left">
@@ -203,7 +205,13 @@
                         <div class="col-sm-12 col-md-6">
                             <ul class="footer-menu">
                                 @if (Route::has('home'))
-                                    <li class="{{ Route::is('home*') ? 'active' : '' }}"><a href="{{ route('home') }}">Личный кабинет</a></li>
+                                    <li class="{{ Route::is('home*') ? 'active' : '' }}">
+                                        @guest
+                                            <a href="{{ route('login') }}">Личный кабинет</a>
+                                        @else
+                                            <a href="{{ route('home') }}">Личный кабинет</a>
+                                        @endguest
+                                    </li>
                                 @endif
                                 @if (Route::has('support'))
                                     <li class="{{ Route::is('support*') ? 'active' : '' }}"><a href="{{ route('support') }}">Техническая поддержка</a></li>
@@ -225,7 +233,7 @@
             </div>
             <div class="footer-social mt-5 text-center">
                 <a href="https://vk.com/balkon.host" title="Вконтакте" target="_blank">Вконтакте</a> ·
-                <del><a href="https://t.me/balkonhost" title="Telegram" target="_blank">Telegram</a></del> ·
+                <a href="https://t.me/balkon_host" title="Telegram" target="_blank">Telegram</a> ·
                 <del><a href="https://twitter.com/balkonhost" title="Telegram" target="_blank">Twitter</a></del> ·
                 <del><a href="https://www.facebook.com/balkon.host" title="Facebook" target="_blank">Facebook</a></del> ·
                 <del><a href="https://www.instagram.com/balkon.host" title="Instagram" target="_blank">Instagram</a></del>

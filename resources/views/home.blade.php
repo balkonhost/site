@@ -1,5 +1,8 @@
 @extends('layout')
 
+@section('title', 'Личный кабинет / Балкон.Хост')
+@section('description', 'Крайне неудобный и дурацкий личный кабинет.')
+
 @section('breadcrumb')
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
