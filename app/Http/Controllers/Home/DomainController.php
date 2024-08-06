@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
+use App\Models\TopLevelDomain;
 use App\Services\RegRu\DomainService;
 use Closure;
 use Exception;
@@ -32,23 +33,19 @@ class DomainController extends Controller
         if ($domain) {
             $validator = Validator::make(['domain' => $domain], [
                 'domain' => ['required', 'string', function (string $attribute, mixed $value, Closure $fail) {
-                    // Проверка на корректность доменного имени
-                    if (!$this->isValidDomainName($value)) {
-                        return $fail("Какое-то станное доменное имя.");
-                    }
-
-                    // Проверка возможности регистрации в заданной зоне
-
                     // Проверка доступности регистрации
-                    switch ($this->isAvailableDomainName($value)) {
-                        case 'exception': $fail("Сервис регистратора гаситься где-то. Приходи со своим запросом позже.");
-                            break;
-                        case 'invalid_domain_name': $fail("Какое-то станное доменное имя.");
-                            break;
-                        case 'domain_already_exists': $fail("Тебя опередили, доменное имя уже занято.");
-                            break;
-                        case 'tld_disabled':
-                            break;
+                    if ('available' !== ($result = $this->isAvailableDomainName($value))) {
+                        switch ($result) {
+                            case 'exception': $fail("Сервис регистратора гаситься где-то. Приходи со своим запросом позже.");
+                                break;
+                            case 'invalid_domain_name': $fail("Какое-то станное доменное имя.");
+                                break;
+                            case 'domain_already_exists': $fail("Тебя опередили, доменное имя уже занято.");
+                                break;
+                            case 'tld_disabled': $fail("Регистрация домена в заданной зоне не доступна.");
+                                break;
+                            default: $fail("Регистрация выбранного домена не доступна. Код ошибки {$result}. Хотя мало вероятно, что знание кода тебе поможет.");
+                        }
                     }
                 }]
             ]);
@@ -60,6 +57,8 @@ class DomainController extends Controller
                     ->withInput();
             }
         }
+
+
 
         return view('home.domain.check', compact('domain'));
     }
@@ -74,6 +73,27 @@ class DomainController extends Controller
 
     private function isAvailableDomainName($domain): string
     {
+        $domain = strtolower($domain);
+
+        // Начальная проверка на корректность доменного имени
+        if (!$this->isValidDomainName($domain)) {
+            return 'invalid_domain_name';
+        }
+
+        // Проверка возможности регистрации в заданной зоне
+        $parts = explode('.', $domain);
+        array_shift($parts);
+        $tld = join('.', $parts);
+
+        $allowedDomains = ['ru'];
+
+        if (!in_array($tld, $allowedDomains) ||
+            !($tld = (new TopLevelDomain())->whereDomain($tld)->first()) ||
+            !($prodiver = $tld->providers()->withPivot('new_price')->where('name', 'REG.RU')->first())) {
+            return 'tld_disabled';
+        }
+
+        // Проверка системой регистрации
         $service = new DomainService();
         try {
             if (($answer = $service->check(['domain_name' => $domain])) && isset($answer['domains'])) {
