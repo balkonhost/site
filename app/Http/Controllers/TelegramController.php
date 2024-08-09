@@ -22,6 +22,7 @@ class TelegramController extends Controller
                 if ($this->update->getChat()->get('id') == env('TELEGRAM_GROUP_ID')) {
                     if ($this->isCommand()) {
                         $this->bot->addCommands([
+                            Commands\ConfirmedCommand::class,
                             Commands\TransCommand::class,
                         ]);
 

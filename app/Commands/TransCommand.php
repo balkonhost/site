@@ -17,12 +17,12 @@ class TransCommand extends Command
     /**
      * @var array Command Aliases
      */
-    protected array $aliases = [];
+    protected array $aliases = ['t'];
 
     /**
      * @var string Command Description
      */
-    protected string $description = 'Cписок неподтвержденных транзакций пополнения';
+    protected string $description = 'Неподтвержденные транзакций пополнения';
 
     /**
      * {@inheritdoc}
