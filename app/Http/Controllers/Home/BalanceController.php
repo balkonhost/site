@@ -33,10 +33,8 @@ class BalanceController extends Controller
 
             $data = [
                 'type' => 'refill',
-                'method' => 'card',
-                'number' => '7891',
-                'code' => random_int(1000, 9999),
-                'description' => "Пополнение баланса на сумму {$amount} ". trans_choice('рубль|рубля|рублей', $amount) .".",
+                'method' => 'card_7891',
+                'description' => 'Пополнение баланса', // "Пополнение баланса на сумму {$amount} ". trans_choice('рубль|рубля|рублей', $amount) ."."
                 'comment' => 'Оплата на карту',
             ];
 
@@ -46,10 +44,24 @@ class BalanceController extends Controller
         return view('home.balance.refill', compact('transaction'));
     }
 
-    public function transaction($id)
+    public function transaction(Request $request, $id)
     {
         $user = auth()->user();
-        $transaction = $user->transactions()->find($id);
-        dd($transaction);
+        $transaction = $user->transactions()->findOrFail($id);
+
+        if ('POST' == $request->getMethod()) {
+            $request->validate([
+                'amount' => ['required', 'numeric', 'min:10', 'max:5000'],
+                [
+                    'amount.min' => 'Минимум можно 10 деревянных.',
+                    'amount.max' => 'максимум можно 5к деревянных.',
+                ]
+            ]);
+
+            $transaction->amount = $request->get('amount');
+            $transaction->save();
+        }
+
+        return view('home.balance.transaction', compact('transaction'));
     }
 }
