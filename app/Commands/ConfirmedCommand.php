@@ -2,7 +2,6 @@
 
 namespace App\Commands;
 
-use Illuminate\Support\Facades\Log;
 use Telegram\Bot\Commands\Command;
 use Bavix\Wallet\Models\Transaction;
 

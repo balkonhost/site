@@ -18,9 +18,7 @@ class BalanceController extends Controller
     public function refill(Request $request)
     {
         $user = auth()->user();
-        if ($transaction = $user->transactions()->where(['confirmed' => false, 'type' => 'deposit'])->first()) {
-            return redirect(route('home.balance.transaction', $transaction));
-        } elseif ('POST' == $request->getMethod()) {
+        if ('POST' == $request->getMethod()) {
             $request->validate([
                 'amount' => ['required', 'numeric', 'min:10', 'max:5000'],
                 [
@@ -39,6 +37,10 @@ class BalanceController extends Controller
             ];
 
             $user->deposit($amount, $data, false);
+        }
+
+        if ($transaction = $user->transactions()->where(['confirmed' => false, 'type' => 'deposit'])->first()) {
+            return redirect(route('home.balance.transaction', $transaction));
         }
 
         return view('home.balance.refill', compact('transaction'));
