@@ -130,6 +130,40 @@ return [
     |
     */
 
+    'paths' => [
+        'login' => 'zabezhat',
+        'logout' => 'sbezhat',
+        'password' => [
+            'request' => 'zakolebalsya',
+            'reset' => 'izmena/{token}',
+            'email' => 'zakolebalsya',
+            //'update' => '2',
+            //'confirm' => '3',
+            //'confirmation' => '4',
+        ],
+        'register' => 'obosnovatsya',
+        //'verification' => [
+            //'notice' => null,
+            //'verify' => null,
+            //'send' => null,
+        //],
+        //'user-profile-information' => [
+            //'update' => null,
+        //],
+        //'user-password' => [
+            //'update' => null,
+        //],
+        //'two-factor' => [
+            //'login' => null,
+            //'enable' => null,
+            //'confirm' => null,
+            //'disable' => null,
+            //'qr-code' => null,
+            //'secret-key' => null,
+            //'recovery-codes' => null,
+        //],
+    ],
+
     'features' => [
         Features::registration(),
         Features::resetPasswords(),
