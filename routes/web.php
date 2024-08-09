@@ -1,12 +1,10 @@
 <?php
 
-use App\Http\Controllers\DomainController;
-use App\Http\Controllers\CartController;
 use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\TelegramController;
 use App\Models\Admin;
 use App\Models\UserTemp;
-use App\Services\RegRu\DomainService;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 
@@ -68,7 +66,7 @@ Route::get('/img/notification-logo-{key}.png', function ($key, UserTemp $user) {
     return response()->file('./img/notification-logo.png');
 })->name('notification.logo');
 
-/*Route::group(['prefix' => 'domain'], function () {
+/*Route::group(['prefix' => 'domen'], function () {
     Route::get('', [DomainController::class, 'index'])
         ->name('domain');
     Route::post('', [DomainController::class, 'check'])
@@ -129,3 +127,5 @@ Route::get('/img/notification-logo-{key}.png', function ($key, UserTemp $user) {
 //    'show' => 'thoughts.show',
 //    'destroy' => 'thoughts.destroy'
 //]);
+
+Route::any('/telegram/webhook', [TelegramController::class, 'webhook']);
