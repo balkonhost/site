@@ -1,10 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BalanceController;
-use App\Http\Controllers\DomainController;
-use App\Http\Controllers\HostingController;
+use App\Http\Controllers\Home;
 use App\Models\User;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,19 +15,21 @@ use App\Models\User;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [Home\HomeController::class, 'index'])->name('home');
 
-Route::group(['prefix' => 'balance'], function () {
-    Route::get('', [BalanceController::class, 'index'])->name('home.balance');
+Route::group(['prefix' => 'balans'], function () {
+    Route::get('', [Home\BalanceController::class, 'index'])->name('home.balance');
+    Route::any('zakinut', [Home\BalanceController::class, 'refill'])->name('home.balance.refill');
+    Route::any('{id}', [Home\BalanceController::class, 'transaction'])->name('home.balance.transaction');
 });
 
-/*Route::group(['prefix' => 'domain'], function () {
-    Route::get('', [DomainController::class, 'list'])->name('home.domain');
+Route::group(['prefix' => 'domen'], function () {
+    Route::get('', [Home\DomainController::class, 'index'])->name('home.domain');
+    Route::get('novy/{domain?}', [Home\DomainController::class, 'registration'])->name('home.domain.check');
+    Route::post('novy/{domain}', [Home\DomainController::class, 'registration'])->name('home.domain.registration');
 });
 
-Route::group(['prefix' => 'hosting'], function () {
+/*Route::group(['prefix' => 'hosting'], function () {
     Route::get('', [HostingController::class, 'list'])->name('home.hosting');
 });*/
 
@@ -57,6 +57,17 @@ Route::get('/auth/{user}', function (User $user) {
         $user->withdraw(169, [
             'description' => 'Регистрация домена домашняя-тушенка-74.рф.',
             'comment' => 'Регистрации домена в зоне .РФ сроком на 1 год.'
+        ]);
+    }
+    return view('home');
+});*/
+
+/*Route::get('/withdraw', function () {
+    if (auth()->user()->getAuthIdentifier() === 0) {
+        $user = User::find(5);
+        $user->forceWithdraw(175, [
+            'description' => 'Продление домена домашняя-тушенка-74.рф.',
+            'comment' => 'Продление регистрации домена в зоне .РФ сроком на 1 год.'
         ]);
     }
     return view('home');
