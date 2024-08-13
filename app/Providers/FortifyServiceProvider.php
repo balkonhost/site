@@ -73,7 +73,7 @@ class FortifyServiceProvider extends ServiceProvider
                 if ($user->isDirty()) {
                     $user->email_verified_at = Carbon::now();
                     if ($user->save() && isset($temp)) {
-                        $user->wallet;
+                        $user->wallet->save();
                         $temp->delete();
                     }
                 }
