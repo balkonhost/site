@@ -30,7 +30,7 @@ class BalanceController extends Controller
             $amount = $request->get('amount');
 
             $data = [
-                'type' => 'refill',
+                'type' => 'refill', // 'newal', 'renewal'
                 'method' => 'card_7891',
                 //'description' => 'Пополнение баланса', // "Пополнение баланса на сумму {$amount} ". trans_choice('рубль|рубля|рублей', $amount) ."."
                 //'comment' => 'Оплата на карту',
