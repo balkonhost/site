@@ -32,8 +32,8 @@ class BalanceController extends Controller
             $data = [
                 'type' => 'refill',
                 'method' => 'card_7891',
-                'description' => 'Пополнение баланса', // "Пополнение баланса на сумму {$amount} ". trans_choice('рубль|рубля|рублей', $amount) ."."
-                'comment' => 'Оплата на карту',
+                //'description' => 'Пополнение баланса', // "Пополнение баланса на сумму {$amount} ". trans_choice('рубль|рубля|рублей', $amount) ."."
+                //'comment' => 'Оплата на карту',
             ];
 
             $user->deposit($amount, $data, false);
