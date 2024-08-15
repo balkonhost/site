@@ -39,39 +39,9 @@
             </tr>
             </thead>
             <tbody class="table-group-divider">
-            @foreach($transactions as $transaction)
-                <tr>
-                    <td>
-                        {{ $transaction->created_at->format('d.m.Y') }}<br>
-                        <small>{{ $transaction->created_at->format('H:i:s') }}</small>
-                    </td>
-                    <td class="text-nowrap">{{ $transaction->amount }} ₽</td>
-                    <td>
-                        @isset($transaction->meta['type'])
-                            @if ('refill' == $transaction->meta['type'])
-                                <a href="{{ route('home.balance.transaction', $transaction) }}">Пополнение баланса</a>
-                            @elseif('renewal' == $transaction->meta['type'])
-                                @isset($transaction->meta['domain'])
-                                    Продление домена {{ $transaction->meta['domain'] }}
-                                @endisset
-                            @endif
-                        @endisset
-
-                        @isset($transaction->meta['method'])
-                            @if (($method = current(explode('_', $transaction->meta['method']))) && 'card' == $method)
-                                <br><small>Оплата на карту</small>
-                            @endif
-                        @endisset
-                    </td>
-                    <td>
-                        @if ($transaction->confirmed)
-                            Подтвержден
-                        @else
-                            Не подтвержден
-                        @endif
-                    </td>
-                </tr>
-            @endforeach
+                @foreach($transactions as $transaction)
+                    @include("home.balance.list_". $transaction->type)
+                @endforeach
             </tbody>
         </table>
 
